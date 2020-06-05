@@ -68,7 +68,15 @@ use Illuminate\Support\Facades\Route;
 //     return view('home', compact('name'));
 // })->name('home');
 
+$trips=[
+	// ['title' => 'trip # 1'],
+	// ['title' => 'trip # 2'],
+	// ['title' => 'trip # 3'],
+	// ['title' => 'trip # 4'],
+	// ['title' => 'trip # 5'],
+];
+
 Route::view('/', 'home')->name('home');
-Route::view('/trips', 'trips')->name('trips');
-Route::view('/maketrip', 'maketrip')->name('maketrip');
-Route::view('/jointrip', 'jointrip')->name('jointrip');
+Route::view('/trips', 'trips', compact('trips'))->name('trips');
+// Route::view('/maketrip', 'maketrip')->name('maketrip');
+// Route::view('/jointrip', 'jointrip')->name('jointrip');
