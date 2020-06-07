@@ -75,4 +75,4 @@ Route::get('/trips', 'TripsController@index')->name('trips');
 Route::view('/maketrip', 'maketrip')->name('maketrip');
 Route::view('/jointrip', 'jointrip')->name('jointrip');
 
-Route::resource('trips','TripsController');
+// Route::resource('trips','TripsController');
