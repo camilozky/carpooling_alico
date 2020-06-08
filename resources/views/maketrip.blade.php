@@ -4,20 +4,6 @@
 
 @section('content')
 	<h1>Make a trip</h1>
-	<script type="text/javascript">
-		function ConfirmTrip()
-		{
-			var message = confirm("¿Estas seguro de crear el viaje?");
-			if (message)
-			{
-				alert("¡Haz creado el viaje correctamente!");
-			}
-			else
-			{
-				alert("¡Haz cancelado la creación del viaje!");
-			}
-		}
-	</script>
 	<form method="POST" action="{{ route('maketrip') }}">
 		@csrf
 		<input name="name" placeholder="Nombre"><br>
@@ -35,7 +21,7 @@
 		<input type="number" name="seats" placeholder="Cupos"><br>
 		<input type="subject" name="placeMeet" placeholder="Lugar de Encuentro"><br>
 		<textarea name="places" placeholder="Sitios del viaje" ></textarea><br>
-		<input type="button" onclick="ConfirmTrip()" value="Crear viaje" />
+		<button>Crear Viaje</button>
 		<input type="reset" value="Limpiar datos">
 	</form>
 @endsection
