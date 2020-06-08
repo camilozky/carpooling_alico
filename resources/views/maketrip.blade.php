@@ -5,7 +5,7 @@
 @section('content')
 	<h1>Make a trip</h1>
 	<script type="text/javascript">
-		function ConfirmDemo()
+		function ConfirmTrip()
 		{
 			var message = confirm("¿Estas seguro de crear el viaje?");
 			if (message)
@@ -35,7 +35,7 @@
 		<input type="number" name="seats" placeholder="Cupos"><br>
 		<input type="subject" name="placeMeet" placeholder="Lugar de Encuentro"><br>
 		<textarea name="places" placeholder="Sitios del viaje" ></textarea><br>
-		<input type="button" onclick="ConfirmDemo()" value="Crear viaje" />
-		<input type="reset" value="Limpiar campos">
+		<input type="button" onclick="ConfirmTrip()" value="Crear viaje" />
+		<input type="reset" value="Limpiar datos">
 	</form>
 @endsection
