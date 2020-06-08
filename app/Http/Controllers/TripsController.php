@@ -41,7 +41,10 @@ class TripsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return $request;
+        // return $request->get('name'); //get a field
+        // return request('name'); //get a field another way
+
     }
 
     /**
