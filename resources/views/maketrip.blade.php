@@ -4,6 +4,21 @@
 
 @section('content')
 	<h1>Make a trip</h1>
+	<style>
+	.button
+	{
+		border: none;
+		color: white;
+		padding: 15px 32px;
+		text-align: center;
+		text-decoration: none;
+		display: inline-block;
+		font-size: 16px;
+		margin: 4px 2px;
+		cursor: pointer;
+	}
+	.buttonGreen {background-color: #4CAF50;} /* Green */
+	</style>
 	<form method="POST" action="{{ route('maketrip') }}">
 		@csrf
 		<input name="name" placeholder="Nombre"><br>
@@ -21,7 +36,7 @@
 		<input type="number" name="seats" placeholder="Cupos"><br>
 		<input type="subject" name="placeMeet" placeholder="Lugar de Encuentro"><br>
 		<textarea name="places" placeholder="Sitios del viaje" ></textarea><br>
-		<button>Crear Viaje</button>
-		<input type="reset" value="Limpiar datos">
+		<button class="button buttonGreen">Crear Viaje</button>
+		<button type="reset" class="button buttonGreen">Limpiar datos</button>
 	</form>
 @endsection
