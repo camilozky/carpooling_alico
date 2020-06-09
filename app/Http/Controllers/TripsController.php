@@ -41,6 +41,18 @@ class TripsController extends Controller
      */
     public function store(Request $request)
     {
+        request()->validate([
+            'name'=>'required',
+            'email'=>'required|email',
+            'phone'=>'required',
+            'datePickup'=>'required|date',
+            'timePickup'=>'required',
+            'placePickup'=>'required',
+            'placeDropoff'=>'required',
+            'seats'=>'required',
+            'placeMeet'=>'required',
+            'places'=>'required|min:3'
+            ]);
         return $request;
         // return $request->get('name'); //get a field
         // return request('name'); //get a field another way
