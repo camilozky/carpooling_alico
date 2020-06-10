@@ -4,7 +4,7 @@
 	<title>@yield('title', 'CarPooling Alico')</title>
 	<style >
 		.active a {
-			color: green;
+			color: darkgreen;
 			text-decoration: none;
 		}
 	</style>

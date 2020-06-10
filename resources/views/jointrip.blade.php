@@ -4,5 +4,6 @@
 
 @section('content')
 <html>
-	<h1>Join a trip</h1>
+	<h1>{{ __('Join a trip') }}</h1>
+
 @endsection

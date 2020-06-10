@@ -3,7 +3,7 @@
 @section('title', 'List of Trips')
 
 @section('content')
-	<h1>List of trips</h1>
+	<h1>{{ __('List of trips') }}</h1>
 
 {{-- 	<ul>
 		<?php foreach ($trips as $tripsItem) {

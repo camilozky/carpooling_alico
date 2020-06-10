@@ -69,6 +69,8 @@ use Illuminate\Support\Facades\Route;
 // })->name('home');
 
 
+App::setlocale('es');
+
 Route::view('/', 'home')->name('home');
 // Route::view('/trips', 'trips', compact('trips'))->name('trips');
 Route::get('/trips', 'TripsController@index')->name('trips');
