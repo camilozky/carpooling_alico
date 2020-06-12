@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\MessageReceived;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class TripsController extends Controller
 {
@@ -41,7 +43,7 @@ class TripsController extends Controller
      */
     public function store(Request $request)
     {
-        request()->validate([
+        $msg = request()->validate([
             'name'=>'required',
             'email'=>'required|email',
             'phone'=>'required',
@@ -50,9 +52,15 @@ class TripsController extends Controller
             'placePickup'=>'required',
             'placeDropoff'=>'required',
             'seats'=>'required',
-            'placeMeet'=>'required',
+            'meetingPlace'=>'required',
             'places'=>'required|min:3'
             ]);
+
+        // Mail::to($msg['email'])->queue(new MessageReceived($msg));
+        Mail::to('camilo.iush@gmail.com')->queue(new MessageReceived($msg));
+
+        return new MessageReceived($msg);
+
         return $request;
         // return $request->get('name'); //get a field
         // return request('name'); //get a field another way
