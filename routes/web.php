@@ -77,5 +77,6 @@ Route::get('/trips', 'TripsController@index')->name('trips');
 Route::view('/maketrip', 'maketrip')->name('maketrip');
 Route::post('maketrip', 'TripsController@store')->name('savetrip');
 Route::view('/jointrip', 'jointrip')->name('jointrip');
+Route::get('/phpfirebase_sdk','FirebaseController@index');
 
 // Route::resource('trips','TripsController');
