@@ -3,7 +3,7 @@
 @section('title', 'Php Firebase_sdk')
 
 @section('content')
-	<h1>{{ __('List of trips') }}</h1>
+	<h1>{{ __('List of trips with Firebase') }}</h1>
 	<ul>
 		@forelse ($trips as $tripsItem)
 			<li>{{ $tripsItem['title'] }}</li>
