@@ -1,7 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Kreait\Firebase;
+use Kreait\Firebase\Factory;
+use Kreait\Firebase\ServiceAccount;
+use Kreait\Firebase\Database;
 use App\Mail\MessageReceived;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -58,10 +61,22 @@ class TripsController extends Controller
 
         // Mail::to($msg['email'])->queue(new MessageReceived($msg));
         Mail::to('camilo.iush@gmail.com')->queue(new MessageReceived($msg));
-
+        $factory = (new Factory)->withServiceAccount(__DIR__.'/car-pooling-91d2a-119437167b39.json');
+        $database = $factory->createDatabase();
+        $newPost = $database
+            ->getReference('/')
+            ->push($msg);
         return new MessageReceived($msg);
-
+        // $newPost->getKey(); // => -KVr5eu8gcTv7_AHb-3-
+        //$newPost->getUri(); // => https://my-project.firebaseio.com/blog/posts/-KVr5eu8gcTv7_AHb-3-
+        //$newPost->getChild('title')->set('Changed post title');
+        //$newPost->getValue(); // Fetches the data from the realtime database
+        //$newPost->remove();
+        // echo"<pre>";
+        // print_r($newPost->getvalue());
         return $request;
+
+
         // return $request->get('name'); //get a field
         // return request('name'); //get a field another way
 
