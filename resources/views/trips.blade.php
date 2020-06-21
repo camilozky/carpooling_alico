@@ -40,7 +40,7 @@
  --}}
 	<ul>
 		@forelse ($trips as $tripsItem)
-			<li>{{ $tripsItem['title'] }}</li>
+			<li>{{ $tripsItem['placeDropoff'] }} {{ $tripsItem['timePickup'] }}</li>
 		@empty
 			<li>There are no trips</li>
 		@endforelse

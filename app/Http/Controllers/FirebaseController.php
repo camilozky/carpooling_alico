@@ -9,7 +9,7 @@ use App\Mail\MessageReceived;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
-class TripsController extends Controller
+class FirebaseController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,19 +18,13 @@ class TripsController extends Controller
      */
     public function index()
     {
-
-
-        $factory = (new Factory)->withServiceAccount(__DIR__.'/car-pooling-91d2a-119437167b39.json');
-        $database = $factory->createDatabase();
-        $trips = $database->getReference('trips')->getvalue();
-        // $trips=[
-        //     ['title' => 'trip # 1'],
-        //     ['title' => 'trip # 2'],
-        //     ['title' => 'trip # 3'],
-        //     ['title' => 'trip # 4'],
-        //     ['title' => 'trip # 5'],
-        // ];
-
+        $trips=[
+            ['title' => 'trip # 1'],
+            ['title' => 'trip # 2'],
+            ['title' => 'trip # 3'],
+            ['title' => 'trip # 4'],
+            ['title' => 'trip # 5'],
+        ];
         return view('trips', compact('trips'));
     }
 
@@ -70,7 +64,7 @@ class TripsController extends Controller
         $factory = (new Factory)->withServiceAccount(__DIR__.'/car-pooling-91d2a-119437167b39.json');
         $database = $factory->createDatabase();
         $newPost = $database
-            ->getReference('/trips')
+            ->getReference('/')
             ->push($msg);
         return new MessageReceived($msg);
         // $newPost->getKey(); // => -KVr5eu8gcTv7_AHb-3-
