@@ -1,13 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
-use Kreait\Firebase;
-use Kreait\Firebase\Factory;
-use Kreait\Firebase\ServiceAccount;
-use Kreait\Firebase\Database;
 use App\Mail\MessageReceived;
+use App\Trip;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use Kreait\Firebase;
+use Kreait\Firebase\Database;
+use Kreait\Firebase\Factory;
+use Kreait\Firebase\ServiceAccount;
 
 class TripsController extends Controller
 {
@@ -22,7 +23,11 @@ class TripsController extends Controller
 
         $factory = (new Factory)->withServiceAccount(__DIR__.'/car-pooling-91d2a-119437167b39.json');
         $database = $factory->createDatabase();
-        $trips = $database->getReference('trips')->getvalue();
+        $tripsFromFirebase = $database->getReference('trips')->getvalue();
+        $trips = Trip::latest('updated_at')->paginate();
+        // $trips = Trip::latest('updated_at')->get();  //SELECT * FROM trips order by updated_at DESC
+        // $trips = Trip::where([1,2,3])->latest('updated_at')->get(); //SELECT * FROM trips WHERE id=(1,2,3)
+
         // $trips=[
         //     ['title' => 'trip # 1'],
         //     ['title' => 'trip # 2'],
@@ -66,7 +71,7 @@ class TripsController extends Controller
             ]);
 
         // Mail::to($msg['email'])->queue(new MessageReceived($msg));
-        Mail::to('camilo.iush@gmail.com')->queue(new MessageReceived($msg));
+        Mail::to(request('email'))->queue(new MessageReceived($msg));
         $factory = (new Factory)->withServiceAccount(__DIR__.'/car-pooling-91d2a-119437167b39.json');
         $database = $factory->createDatabase();
         $newPost = $database
@@ -74,7 +79,7 @@ class TripsController extends Controller
             ->push($msg);
         return new MessageReceived($msg);
         // $newPost->getKey(); // => -KVr5eu8gcTv7_AHb-3-
-        //$newPost->getUri(); // => https://my-project.firebaseio.com/blog/posts/-KVr5eu8gcTv7_AHb-3-
+        //$newPost->get1Uri(); // => https://my-project.firebaseio.com/blog/posts/-KVr5eu8gcTv7_AHb-3-
         //$newPost->getChild('title')->set('Changed post title');
         //$newPost->getValue(); // Fetches the data from the realtime database
         //$newPost->remove();
