@@ -40,10 +40,9 @@
  --}}
 	<ul>
 		@forelse ($trips as $tripsItem)
-			<li>{{ $tripsItem->placeDropoff }} {{ $tripsItem->name }}<br>
-			 <small>{{ $tripsItem->timePickup }} {{ $tripsItem->updated_at->diffForHumans() }}  </small></li>
+			<li><a href="{{ route ('trips.show', $tripsItem) }}">{{ $tripsItem->name }} <br> <small> {{ $tripsItem->placePickup }} => {{ $tripsItem->placeDropoff }}</small>  <br><small>{{ $tripsItem->timePickup }} </small> <br> <small> Cupos {{ $tripsItem->seats }}<br> {{ $tripsItem->updated_at->diffForHumans() }}  </small> </a></li>
 		@empty
-			<li>There are no trips</li>
+			<li>"{{ __('There are no trips') }}"</li>
 		@endforelse
 		{{$trips->links()}}
 	</ul>

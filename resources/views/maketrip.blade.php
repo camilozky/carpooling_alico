@@ -25,7 +25,7 @@
 		color: red
 	}
 	</style>
-	<form method="POST" action="{{ route('maketrip') }}">
+	<form method="POST" action="{{ route('trips.store') }}">
 		@csrf
 		<input name="name" placeholder="{{ __('Enter Name') }}" value="{{old('name')}}"><br>
 		{!! $errors->first('name','<small class="red">:message</small><br>')!!}

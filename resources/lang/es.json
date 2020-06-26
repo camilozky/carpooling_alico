@@ -1,6 +1,9 @@
-{
+	{
+	"Trip": "Viaje",
 	"Make a trip": "Crear viaje",
+	"Join a trip": "Unirse al viaje",
 	"Home": "Inicio",
+	"There are no trips": "No hay viajes para mostrar",
 	"List of trips": "Lista de Viajes",
 	"Trip created": "Viaje Creado",
 	"List of trips with Firebase": "Lista de Viajes con Firebase",
@@ -14,7 +17,6 @@
 	"Enter a metting place": "Escribe un lugar de encuentro",
 	"Enter places destination": "Escribe lugares de la ruta",
 	"Car": "Carro",
-	"Join a trip": "Unirse a un Viaje",
 	"A fresh verification link has been sent to your email address.": "Se ha enviado un nuevo enlace de verificación a su correo electrónico.",
 	"All rights reserved.": "Todos los derechos reservados.",
 	"Before proceeding, please check your email for a verification link.": "Antes de continuar, por favor, confirme su correo electrónico con el enlace de verificación que le fue enviado.",

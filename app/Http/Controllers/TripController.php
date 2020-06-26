@@ -10,7 +10,7 @@ use Kreait\Firebase\Database;
 use Kreait\Firebase\Factory;
 use Kreait\Firebase\ServiceAccount;
 
-class TripsController extends Controller
+class TripController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -24,7 +24,7 @@ class TripsController extends Controller
         $factory = (new Factory)->withServiceAccount(__DIR__.'/car-pooling-91d2a-119437167b39.json');
         $database = $factory->createDatabase();
         $tripsFromFirebase = $database->getReference('trips')->getvalue();
-        $trips = Trip::latest('updated_at')->paginate();
+        $trips = Trip::latest('updated_at')->paginate(5);
         // $trips = Trip::latest('updated_at')->get();  //SELECT * FROM trips order by updated_at DESC
         // $trips = Trip::where([1,2,3])->latest('updated_at')->get(); //SELECT * FROM trips WHERE id=(1,2,3)
 
@@ -36,7 +36,7 @@ class TripsController extends Controller
         //     ['title' => 'trip # 5'],
         // ];
 
-        return view('trips', compact('trips'));
+        return view('trips.index', compact('trips'));
     }
 
     /**
@@ -101,7 +101,9 @@ class TripsController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('trips.show' , [
+            'trip' => Trip::findOrFail($id)
+        ]);
     }
 
     /**
