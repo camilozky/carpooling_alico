@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('title', 'Make a Trip')
+@section('title', 'Crear un Viaje')
 
 @section('content')
 	<h1>{{ __('Make a trip') }}</h1>

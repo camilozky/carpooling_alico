@@ -9,7 +9,7 @@
 @endsection
  --}}
 
-@section('title', 'Home')
+@section('title', 'Inicio')
 
 @section('content')
 	<h1>{{ __('Home') }}</h1>

@@ -73,11 +73,11 @@ App::setlocale('es');
 
 Route::view('/', 'home')->name('home');
 // Route::view('/trips', 'trips', compact('trips'))->name('trips');
-Route::get('/trips', 'TripController@index')->name('trips.index');
-Route::get('/trips/{id}', 'TripController@show')->name('trips.show');
-Route::view('/maketrip', 'maketrip')->name('maketrip');
-Route::view('/jointrip', 'jointrip')->name('jointrip');
-Route::post('maketrip', 'TripController@store')->name('trips.store');
+Route::get('/viajes', 'TripController@index')->name('trips.index');
+Route::get('/viaje/{trip}', 'TripController@show')->name('trips.show');
+Route::view('/realizar-un-viaje', 'maketrip')->name('maketrip');
+Route::view('/unirse-a-un-viaje', 'jointrip')->name('jointrip');
+Route::post('guardar-un-viaje', 'TripController@store')->name('trips.store');
 
 Route::get('/phpfirebase_sdk','FirebaseController@index');
 // Route::resource('trips','TripController');

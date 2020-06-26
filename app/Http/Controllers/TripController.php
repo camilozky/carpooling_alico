@@ -24,7 +24,7 @@ class TripController extends Controller
         $factory = (new Factory)->withServiceAccount(__DIR__.'/car-pooling-91d2a-119437167b39.json');
         $database = $factory->createDatabase();
         $tripsFromFirebase = $database->getReference('trips')->getvalue();
-        $trips = Trip::latest('updated_at')->paginate(5);
+        $trips = Trip::latest('updated_at')->paginate();
         // $trips = Trip::latest('updated_at')->get();  //SELECT * FROM trips order by updated_at DESC
         // $trips = Trip::where([1,2,3])->latest('updated_at')->get(); //SELECT * FROM trips WHERE id=(1,2,3)
 
@@ -99,10 +99,10 @@ class TripController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Trip $trip)
     {
         return view('trips.show' , [
-            'trip' => Trip::findOrFail($id)
+            'trip' => $trip
         ]);
     }
 

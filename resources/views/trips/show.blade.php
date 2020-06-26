@@ -4,7 +4,7 @@
 
 @section('content')
 		<h1>{{ $trip->placeDropoff}}</h1>
-		<li>{{ $trip->name }} <br> <small> Cupos {{ $trip->seats }} <br>{{ $trip->datePickup }} Hora: {{ $trip->timePickup }}  <br> {{ $trip->placePickup }}<br> {{ $trip->placeDropoff }}<br>{{ $trip->meetingPlace }}  <br> {{ $trip->places }}  <br>  {{ $trip->updated_at->diffForHumans() }}  </small> </li>
+		<li>Conductor: {{ $trip->name }} <br> <small>Cupos: {{ $trip->seats }} <br>Día: {{ $trip->datePickup }}<br>Hora: {{ $trip->timePickup }}<br>Lugar de Recogida: {{ $trip->placePickup }}<br>Lugar de Destino: {{ $trip->placeDropoff }}<br>Lugar de Encuentro: {{ $trip->meetingPlace }}  <br>El viaje pasara por los siguientes lugares: {{ $trip->places }}  <br>Correo electrónico del conductor:  {{ $trip->email }} <br>  {{ $trip->updated_at->diffForHumans() }}  </small> </li>
 	<style>
 	.button
 	{

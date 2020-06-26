@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('title', 'List of Trips')
+@section('title', 'Lista de Viajes')
 
 @section('content')
 	<h1>{{ __('List of trips') }}</h1>
@@ -40,7 +40,7 @@
  --}}
 	<ul>
 		@forelse ($trips as $tripsItem)
-			<li><a href="{{ route ('trips.show', $tripsItem) }}">{{ $tripsItem->name }} <br> <small> {{ $tripsItem->placePickup }} => {{ $tripsItem->placeDropoff }}</small>  <br><small>{{ $tripsItem->timePickup }} </small> <br> <small> Cupos {{ $tripsItem->seats }}<br> {{ $tripsItem->updated_at->diffForHumans() }}  </small> </a></li>
+			<li><a href="{{ route ('trips.show', $tripsItem) }}"> Destino: {{ $tripsItem->placeDropoff }}<br> <small> {{ $tripsItem->name }}</small>  <br><small>{{ $tripsItem->timePickup }} </small> <br> <small> Cupos {{ $tripsItem->seats }}<br>   </a>{{ $tripsItem->updated_at->diffForHumans() }} </small></li>
 		@empty
 			<li>"{{ __('There are no trips') }}"</li>
 		@endforelse
