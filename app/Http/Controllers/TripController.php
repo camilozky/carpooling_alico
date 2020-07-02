@@ -46,7 +46,7 @@ class TripController extends Controller
      */
     public function create()
     {
-        //
+        return view('trips.create');
     }
 
     /**
@@ -60,7 +60,7 @@ class TripController extends Controller
         $msg = request()->validate([
             'name'=>'required',
             'email'=>'required|email',
-            'phone'=>'required',
+            'phonenumber'=>'required',
             'datePickup'=>'required|date',
             'timePickup'=>'required',
             'placePickup'=>'required',
@@ -70,14 +70,32 @@ class TripController extends Controller
             'places'=>'required|min:3'
             ]);
 
-        // Mail::to($msg['email'])->queue(new MessageReceived($msg));
-        Mail::to(request('email'))->queue(new MessageReceived($msg));
-        $factory = (new Factory)->withServiceAccount(__DIR__.'/car-pooling-91d2a-119437167b39.json');
-        $database = $factory->createDatabase();
-        $newPost = $database
-            ->getReference('/trips')
-            ->push($msg);
-        return new MessageReceived($msg);
+        //Local Database
+        Trip::create([
+            'name' => request('name'),
+            'email' => request('email'),
+            'phonenumber' => request('phonenumber'),
+            'datePickup' => request('datePickup'),
+            'timePickup' => request('timePickup'),
+            'placePickup' => request('placePickup'),
+            'placeDropoff' => request('placeDropoff'),
+            'seats' => request('seats'),
+            'meetingPlace' => request('meetingPlace'),
+            'places' => request('places')
+        ]);
+        //Firebase
+        // $factory = (new Factory)->withServiceAccount(__DIR__.'/car-pooling-91d2a-119437167b39.json');
+        // $database = $factory->createDatabase();
+        // $newPost = $database
+        //     ->getReference('/trips')
+        //     ->push($msg);
+
+        //Send Mail
+        Mail::to($msg['email'])->queue(new MessageReceived($msg));
+        // Mail::to(request('email'))->queue(new MessageReceived($msg));
+        // return new MessageReceived($msg);
+
+        return redirect()->route('trips.index');
         // $newPost->getKey(); // => -KVr5eu8gcTv7_AHb-3-
         //$newPost->get1Uri(); // => https://my-project.firebaseio.com/blog/posts/-KVr5eu8gcTv7_AHb-3-
         //$newPost->getChild('title')->set('Changed post title');
@@ -85,12 +103,9 @@ class TripController extends Controller
         //$newPost->remove();
         // echo"<pre>";
         // print_r($newPost->getvalue());
-        return $request;
-
-
+        // return $request;
         // return $request->get('name'); //get a field
         // return request('name'); //get a field another way
-
     }
 
     /**

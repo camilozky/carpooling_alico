@@ -40,11 +40,19 @@
  --}}
 	<ul>
 		@forelse ($trips as $tripsItem)
-			<li><a href="{{ route ('trips.show', $tripsItem) }}"> Destino: {{ $tripsItem->placeDropoff }}<br> <small> {{ $tripsItem->name }}</small>  <br><small>{{ $tripsItem->timePickup }} </small> <br> <small> Cupos {{ $tripsItem->seats }}<br>   </a>{{ $tripsItem->updated_at->diffForHumans() }} </small></li>
+			<li>
+				<a href="{{ route ('trips.show', $tripsItem) }}">
+					{{ __('placeDropoff') }}: {{ $tripsItem->placeDropoff }}<br>
+					<small>
+						{{ __('name') }}: {{ $tripsItem->name }}<br>
+						{{ __('timePickup') }}: {{ $tripsItem->timePickup }}<br>
+						{{ __('seats') }}: {{ $tripsItem->seats }}<br>
+					</a>{{ $tripsItem->updated_at->diffForHumans() }}
+				</small>
+			</li>
 		@empty
 			<li>"{{ __('There are no trips') }}"</li>
 		@endforelse
 		{{$trips->links()}}
 	</ul>
-
 @endsection

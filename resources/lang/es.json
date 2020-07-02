@@ -1,4 +1,8 @@
 	{
+	"name": "Conductor",
+	"seats": "Cupos",
+	"timePickup": "Hora de Recogida",
+	"placeDropoff": "Destino",
 	"Trip Not Found": "Viaje No Encontrado",
 	"Back to home": "Volver Al inicio",
 	"Back to the list of trips": "Volver A la lista de Viajes",

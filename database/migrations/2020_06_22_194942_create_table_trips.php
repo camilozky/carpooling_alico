@@ -22,13 +22,13 @@ class CreateTableTrips extends Migration
             $table->string('email')->unique()->index();
             $table->bigInteger('phonenumber');
             $table->date('datePickup');
-            $table->dateTime('timePickup', 0);
+            $table->text('timePickup');
             $table->text('placePickup');
             $table->text('placeDropoff');
             $table->enum('seats', ['1', '2', '3', '4']);
             $table->text('meetingPlace');
             $table->text('places');
-            $table->decimal('carbonFootprint', 8, 2);
+            // $table->decimal('carbonFootprint', 8, 2);
         });
     }
 
