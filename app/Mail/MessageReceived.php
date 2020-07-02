@@ -11,16 +11,16 @@ class MessageReceived extends Mailable
 {
     use Queueable, SerializesModels;
     public $subject = "Viaje Creado";
-    public $msg ;
+    public $validatedRequestFields ;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($msg)
+    public function __construct($validatedRequestFields)
     {
-        $this->msg = $msg;
+        $this->validatedRequestFields = $validatedRequestFields;
     }
 
     /**

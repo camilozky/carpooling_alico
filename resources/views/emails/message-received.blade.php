@@ -5,15 +5,15 @@
 </head>
 <body>
 
-	{{ var_dump($msg) }}
+	{{ var_dump($validatedRequestFields) }}
 
-	<h1>Hola: {{ $msg['name'] }}</h1>
-	<h2>Acabaste de crear un viaje con el correo: {{ $msg['email'] }} y número de teléfono: {{ $msg['phone'] }}</h2>
-	<h2>Para el día: {{ $msg['datePickup'] }} a las: {{ $msg['timePickup'] }}</h2>
-	{{-- <h2>Para la semana: {{ $msg['weekPickup'] }}</h2> --}}
-	<h2>Lugar de recogida: {{ $msg['placePickup'] }} con destino: {{ $msg['placeDropoff'] }}</h2>
-	<h2>Cupos Disponibles: {{ $msg['seats'] }}</h2>
-	<h2>Lugar de Encuentro: {{ $msg['meetingPlace'] }}</h2>
-	<h2>El viaje pasara por los siguientes lugares: {{ $msg['places'] }}</h2>
+	<h1>Hola: {{ $validatedRequestFields['name'] }}</h1>
+	<h2>Acabaste de crear un viaje con el correo: {{ $validatedRequestFields['email'] }} y número de teléfono: {{ $validatedRequestFields['phonenumber'] }}</h2>
+	<h2>Para el día: {{ $validatedRequestFields['datePickup'] }} a las: {{ $validatedRequestFields['timePickup'] }}</h2>
+	{{-- <h2>Para la semana: {{ $validatedRequestFields['weekPickup'] }}</h2> --}}
+	<h2>Lugar de recogida: {{ $validatedRequestFields['placePickup'] }} con destino: {{ $validatedRequestFields['placeDropoff'] }}</h2>
+	<h2>Cupos Disponibles: {{ $validatedRequestFields['seats'] }}</h2>
+	<h2>Lugar de Encuentro: {{ $validatedRequestFields['meetingPlace'] }}</h2>
+	<h2>El viaje pasara por los siguientes lugares: {{ $validatedRequestFields['places'] }}</h2>
 </body>
 </html>

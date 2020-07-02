@@ -57,43 +57,43 @@ class TripController extends Controller
      */
     public function store(Request $request)
     {
-        $msg = request()->validate([
+        $validatedRequestFields = request()->validate([
             'name'=>'required',
             'email'=>'required|email',
-            'phonenumber'=>'required',
+            'phonenumber'=>'required|numeric|min:7',
             'datePickup'=>'required|date',
             'timePickup'=>'required',
             'placePickup'=>'required',
             'placeDropoff'=>'required',
-            'seats'=>'required',
+            'seats'=>'required|numeric',
             'meetingPlace'=>'required',
             'places'=>'required|min:3'
             ]);
 
         //Local Database
-        Trip::create([
-            'name' => request('name'),
-            'email' => request('email'),
-            'phonenumber' => request('phonenumber'),
-            'datePickup' => request('datePickup'),
-            'timePickup' => request('timePickup'),
-            'placePickup' => request('placePickup'),
-            'placeDropoff' => request('placeDropoff'),
-            'seats' => request('seats'),
-            'meetingPlace' => request('meetingPlace'),
-            'places' => request('places')
-        ]);
+        Trip::create($validatedRequestFields);
+
+        // Save all fields Not to be used unless Trip Class property is protected $fillable
+        // Trip::create([request()->all);
+
+        // Protects against mass assignment
+        // Trip::create([request()->only('name','email','phonenumber','datePickup','timePickup','placePickup','placeDropoff','seats','meetingPlace','places'));
+
+
+        // Save each field that you indicate
+        // Trip::create(['name' => request('name'),'email' => request('email'),'phonenumber' => request('phonenumber'),'datePickup' => request('datePickup'),'timePickup' => request('timePickup'),'placePickup' => request('placePickup'),'placeDropoff' => request('placeDropoff'),'seats' => request('seats'),'meetingPlace' => request('meetingPlace'),'places' => request('places']);
+
         //Firebase
         // $factory = (new Factory)->withServiceAccount(__DIR__.'/car-pooling-91d2a-119437167b39.json');
         // $database = $factory->createDatabase();
         // $newPost = $database
         //     ->getReference('/trips')
-        //     ->push($msg);
+        //     ->push($validatedRequestFields);
 
         //Send Mail
-        Mail::to($msg['email'])->queue(new MessageReceived($msg));
-        // Mail::to(request('email'))->queue(new MessageReceived($msg));
-        // return new MessageReceived($msg);
+        Mail::to($validatedRequestFields['email'])->queue(new MessageReceived($validatedRequestFields));
+        // Mail::to(request('email'))->queue(new MessageReceived($validatedRequestFields));
+        // return new MessageReceived($validatedRequestFields);
 
         return redirect()->route('trips.index');
         // $newPost->getKey(); // => -KVr5eu8gcTv7_AHb-3-

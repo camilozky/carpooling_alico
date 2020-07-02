@@ -12,7 +12,7 @@ use Kreait\Firebase\ServiceAccount;
 use Mpociot\Firebase\SyncsWithFirebase;
 
 
-class TripController extends Controller
+class FirebaseController extends Controller
 {
     /**
      * Display a listing of the resource.
