@@ -3,12 +3,13 @@
 namespace App\Http\Controllers;
 use App\Mail\MessageReceived;
 use App\Trip;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Mail;
 use Kreait\Firebase;
-use Kreait\Firebase\Database;
+use Illuminate\Http\Request;
 use Kreait\Firebase\Factory;
+use Kreait\Firebase\Database;
 use Kreait\Firebase\ServiceAccount;
+use Illuminate\Support\Facades\Mail;
+use App\Http\Requests\CreateTripRequest;
 
 class TripController extends Controller
 {
@@ -55,20 +56,22 @@ class TripController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateTripRequest $request)
     {
-        $validatedRequestFields = request()->validate([
-            'name'=>'required|string',
-            'email'=>'required|email:rfc,dns',
-            'phonenumber'=>'required|numeric',
-            'datePickup'=>'required|date|after:yesterday',
-            'timePickup'=>'required',
-            'placePickup'=>'required',
-            'placeDropoff'=>'required',
-            'seats'=>'required|numeric|min:1|max:4',
-            'meetingPlace'=>'required',
-            'places'=>'required|min:3'
-            ]);
+        $validatedRequestFields = $request->validated();
+
+        // $validatedRequestFields = request()->validate([
+        //     'name'=>'required|string',
+        //     'email'=>'required|email:rfc,dns',
+        //     'phonenumber'=>'required|numeric',
+        //     'datePickup'=>'required|date|after:yesterday',
+        //     'timePickup'=>'required',
+        //     'placePickup'=>'required',
+        //     'placeDropoff'=>'required',
+        //     'seats'=>'required|numeric|min:1|max:4',
+        //     'meetingPlace'=>'required',
+        //     'places'=>'required|min:3'
+        //     ]);
 
         //Local Database
         Trip::create($validatedRequestFields);

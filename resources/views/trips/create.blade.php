@@ -5,6 +5,23 @@
 @section('content')
 	<h1>{{ __('Make a trip') }}</h1>
 
+
+@if($errors->any())
+	{!! $errors->first('name','<small class="red">:message</small><br>')!!}
+	{!! $errors->first('email','<small class="red">:message</small><br>')!!}
+	{!! $errors->first('phone','<small class="red">:message</small><br>')!!}
+	{!! $errors->first('datePickup','<small class="red">:message</small><br>')!!}
+	{!! $errors->first('timePickup','<small class="red">:message</small><br>')!!}
+	{!! $errors->first('placePickup','<small class="red">:message</small><br>')!!}
+	{!! $errors->first('placeDropoff','<small class="red">:message</small><br>')!!}
+	{!! $errors->first('seats','<small class="red">:message</small><br>')!!}
+	{!! $errors->first('meetingPlace','<small class="red">:message</small><br>')!!}
+	{!! $errors->first('places','<small class="red">:message</small><br>')!!}
+@endif
+
+
+
+
 	<style>
 	.button
 	{
@@ -31,7 +48,7 @@
 		{!! $errors->first('name','<small class="red">:message</small><br>')!!}
 		<input type="email" name="email" placeholder="{{ __('Enter Email') }}"value="{{old('email')}}"><br>
 		{!! $errors->first('email','<small class="red">:message</small><br>')!!}
-		<input type="tel" name="phonenumber" placeholder="{{ __('Enter whatsApp') }}"value="{{old('phone')}}"><br>
+		<input type="tel" name="phonenumber" placeholder="{{ __('Enter whatsApp') }}"value="{{old('phonenumber')}}"><br>
 		{!! $errors->first('phone','<small class="red">:message</small><br>')!!}
 		<input type="date" name="datePickup" placeholder="Enter pickup Date"value="{{old('datePickup')}}"><br>
 		{!! $errors->first('datePickup','<small class="red">:message</small><br>')!!}
