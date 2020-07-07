@@ -1,15 +1,15 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Mail\MessageReceived;
 use App\Trip;
 use Kreait\Firebase;
-use Illuminate\Http\Request;
 use Kreait\Firebase\Factory;
+use Illuminate\Http\Request;
 use Kreait\Firebase\Database;
+use App\Mail\MessageReceived;
 use Kreait\Firebase\ServiceAccount;
 use Illuminate\Support\Facades\Mail;
-use App\Http\Requests\CreateTripRequest;
+use App\Http\Requests\SaveTripRequest;
 
 class TripController extends Controller
 {
@@ -56,7 +56,7 @@ class TripController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CreateTripRequest $request)
+    public function store(SaveTripRequest $request)
     {
         $validatedRequestFields = $request->validated();
 
@@ -137,32 +137,38 @@ class TripController extends Controller
         ]);
     }
 
-    public function update(Trip $trip)
+    public function update(Trip $trip, SaveTripRequest $request)
     {
-        $validatedRequestFields = request()->validate([
-            'name'=>'required|string',
-            'email'=>'required|email:rfc,dns',
-            'phonenumber'=>'required|numeric',
-            'datePickup'=>'required|date|after:yesterday',
-            'timePickup'=>'required',
-            'placePickup'=>'required',
-            'placeDropoff'=>'required',
-            'seats'=>'required|numeric|min:1|max:4',
-            'meetingPlace'=>'required',
-            'places'=>'required|min:3'
-        ]);
-        $trip->update([
-            'name'=> request('name'),
-            'email'=> request('email'),
-            'phonenumber'=> request('phonenumber'),
-            'datePickup'=> request('datePickup'),
-            'timePickup'=> request('timePickup'),
-            'placePickup'=> request('placePickup'),
-            'placeDropoff'=> request('placeDropoff'),
-            'seats'=> request('seats'),
-            'meetingPlace'=> request('meetingPlace'),
-            'places'=> request('places'),
-        ]);
+        $validatedRequestFields = $request->validated();
+
+        // $validatedRequestFields = request()->validate([
+        //     'name'=>'required|string',
+        //     'email'=>'required|email:rfc,dns',
+        //     'phonenumber'=>'required|numeric',
+        //     'datePickup'=>'required|date|after:yesterday',
+        //     'timePickup'=>'required',
+        //     'placePickup'=>'required',
+        //     'placeDropoff'=>'required',
+        //     'seats'=>'required|numeric|min:1|max:4',
+        //     'meetingPlace'=>'required',
+        //     'places'=>'required|min:3'
+        // ]);
+
+        $trip->update($validatedRequestFields);
+
+        // $trip->update([
+        //     'name'=> request('name'),
+        //     'email'=> request('email'),
+        //     'phonenumber'=> request('phonenumber'),
+        //     'datePickup'=> request('datePickup'),
+        //     'timePickup'=> request('timePickup'),
+        //     'placePickup'=> request('placePickup'),
+        //     'placeDropoff'=> request('placeDropoff'),
+        //     'seats'=> request('seats'),
+        //     'meetingPlace'=> request('meetingPlace'),
+        //     'places'=> request('places'),
+        // ]);
+
         Mail::to($validatedRequestFields['email'])->queue(new MessageReceived($validatedRequestFields));
         return redirect()->route('trips.show', $trip);
     }

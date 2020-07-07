@@ -19,9 +19,6 @@
 	{!! $errors->first('places','<small class="red">:message</small><br>')!!}
 @endif
 
-
-
-
 	<style>
 	.button
 	{
