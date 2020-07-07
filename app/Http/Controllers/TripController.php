@@ -58,14 +58,14 @@ class TripController extends Controller
     public function store(Request $request)
     {
         $validatedRequestFields = request()->validate([
-            'name'=>'required',
-            'email'=>'required|email',
-            'phonenumber'=>'required|numeric|min:7',
-            'datePickup'=>'required|date',
+            'name'=>'required|string',
+            'email'=>'required|email:rfc,dns',
+            'phonenumber'=>'required|numeric',
+            'datePickup'=>'required|date|after:yesterday',
             'timePickup'=>'required',
             'placePickup'=>'required',
             'placeDropoff'=>'required',
-            'seats'=>'required|numeric',
+            'seats'=>'required|numeric|min:1|max:4',
             'meetingPlace'=>'required',
             'places'=>'required|min:3'
             ]);
@@ -127,29 +127,43 @@ class TripController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Trip $trip)
     {
-        //
+        return view('trips.edit' , [
+            'trip' => $trip
+        ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    public function update(Trip $trip)
     {
-        //
+        $validatedRequestFields = request()->validate([
+            'name'=>'required|string',
+            'email'=>'required|email:rfc,dns',
+            'phonenumber'=>'required|numeric',
+            'datePickup'=>'required|date|after:yesterday',
+            'timePickup'=>'required',
+            'placePickup'=>'required',
+            'placeDropoff'=>'required',
+            'seats'=>'required|numeric|min:1|max:4',
+            'meetingPlace'=>'required',
+            'places'=>'required|min:3'
+        ]);
+        $trip->update([
+            'name'=> request('name'),
+            'email'=> request('email'),
+            'phonenumber'=> request('phonenumber'),
+            'datePickup'=> request('datePickup'),
+            'timePickup'=> request('timePickup'),
+            'placePickup'=> request('placePickup'),
+            'placeDropoff'=> request('placeDropoff'),
+            'seats'=> request('seats'),
+            'meetingPlace'=> request('meetingPlace'),
+            'places'=> request('places'),
+        ]);
+        Mail::to($validatedRequestFields['email'])->queue(new MessageReceived($validatedRequestFields));
+        return redirect()->route('trips.show', $trip);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         //

@@ -11,7 +11,7 @@ class MessageReceived extends Mailable
 {
     use Queueable, SerializesModels;
     public $subject = "Viaje Creado";
-    public $validatedRequestFields ;
+    public $validatedRequestFields;
 
     /**
      * Create a new message instance.

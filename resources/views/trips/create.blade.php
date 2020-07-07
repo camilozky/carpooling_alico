@@ -45,7 +45,7 @@
 		{!! $errors->first('seats','<small class="red">:message</small><br>')!!}
 		<input type="subject" name="meetingPlace" placeholder="{{ __('Enter a metting place') }}"value="{{old('meetingPlace')}}"><br>
 		{!! $errors->first('meetingPlace','<small class="red">:message</small><br>')!!}
-		<textarea type="subject" name="places" rows="10" cols="22" placeholder="{{ __('Enter places destination') }}"value="{{old('places')}}"></textarea><br>
+		<input type="subject" type="subject" name="places" rows="10" cols="22" placeholder="{{ __('Enter places destination') }}"value="{{old('places')}}"><br>
 		{!! $errors->first('places','<small class="red">:message</small><br>')!!}
 		<button class="button buttonGreen">{{ __('Make a trip') }}</button>
 	</form>
