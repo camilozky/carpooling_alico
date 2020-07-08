@@ -7,9 +7,9 @@
 
 
 @if($errors->any())
-	{!! $errors->first('name','<small class="red">:message</small><br>')!!}
+	{!! $errors->first('nameDriver','<small class="red">:message</small><br>')!!}
 	{!! $errors->first('email','<small class="red">:message</small><br>')!!}
-	{!! $errors->first('phone','<small class="red">:message</small><br>')!!}
+	{!! $errors->first('phoneNumber','<small class="red">:message</small><br>')!!}
 	{!! $errors->first('datePickup','<small class="red">:message</small><br>')!!}
 	{!! $errors->first('timePickup','<small class="red">:message</small><br>')!!}
 	{!! $errors->first('placePickup','<small class="red">:message</small><br>')!!}
@@ -41,12 +41,12 @@
 	</style>
 	<form method="POST" action="{{ route('trips.store') }}">
 		@csrf
-		<input name="name" placeholder="{{ __('Enter Name') }}" value="{{old('name')}}"><br>
-		{!! $errors->first('name','<small class="red">:message</small><br>')!!}
+		<input name="nameDriver" placeholder="{{ __('Enter Name') }}" value="{{old('nameDriver')}}"><br>
+		{!! $errors->first('nameDriver','<small class="red">:message</small><br>')!!}
 		<input type="email" name="email" placeholder="{{ __('Enter Email') }}"value="{{old('email')}}"><br>
 		{!! $errors->first('email','<small class="red">:message</small><br>')!!}
-		<input type="tel" name="phonenumber" placeholder="{{ __('Enter whatsApp') }}"value="{{old('phonenumber')}}"><br>
-		{!! $errors->first('phone','<small class="red">:message</small><br>')!!}
+		<input type="tel" name="phoneNumber" placeholder="{{ __('Enter whatsApp') }}"value="{{old('phoneNumber')}}"><br>
+		{!! $errors->first('phoneNumber','<small class="red">:message</small><br>')!!}
 		<input type="date" name="datePickup" placeholder="Enter pickup Date"value="{{old('datePickup')}}"><br>
 		{!! $errors->first('datePickup','<small class="red">:message</small><br>')!!}
 		<input type="time" name="timePickup" placeholder="Enter pickup Time"value="{{old('timePickup')}}"><br>

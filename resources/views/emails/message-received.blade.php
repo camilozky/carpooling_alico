@@ -7,8 +7,8 @@
 
 	{{ var_dump($validatedRequestFields) }}
 
-	<h1>Hola: {{ $validatedRequestFields['name'] }}</h1>
-	<h2>Acabaste de crear un viaje con el correo: {{ $validatedRequestFields['email'] }} y número de teléfono: {{ $validatedRequestFields['phonenumber'] }}</h2>
+	<h1>Hola: {{ $validatedRequestFields['nameDriver'] }}</h1>
+	<h2>Acabaste de crear un viaje con el correo: {{ $validatedRequestFields['email'] }} y número de teléfono: {{ $validatedRequestFields['phoneNumber'] }}</h2>
 	<h2>Para el día: {{ $validatedRequestFields['datePickup'] }} a las: {{ $validatedRequestFields['timePickup'] }}</h2>
 	{{-- <h2>Para la semana: {{ $validatedRequestFields['weekPickup'] }}</h2> --}}
 	<h2>Lugar de recogida: {{ $validatedRequestFields['placePickup'] }} con destino: {{ $validatedRequestFields['placeDropoff'] }}</h2>

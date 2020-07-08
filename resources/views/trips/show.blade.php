@@ -29,11 +29,11 @@
 	<form method="POST" action="{{ route('trips.update', $trip) }}">
 		@csrf @method('PATCH')
 		{{ __('name') }}<br>
-		<label name="name" >{{ $trip->name }}<br>
+		<label name="nameDriver" >{{ $trip->nameDriver }}<br>
 		{{ __('email') }}<br>
 		<label type="email" name="email">{{ $trip->email }}<br>
-		{{ __('phonenumber') }}<br>
-		<label type="tel" name="phonenumber">{{ $trip->phonenumber }}<br>
+		{{ __('phoneNumber') }}<br>
+		<label type="tel" name="phoneNumber">{{ $trip->phoneNumber }}<br>
 		{{ __('datePickup') }}<br>
 		<label type="date" name="datePickup" >{{ $trip->datePickup }}<br>
 		{{ __('timePickup') }}<br>
@@ -48,9 +48,8 @@
 		<label type="subject" name="meetingPlace">{{ $trip->meetingPlace }}<br>
 		{{ __('places') }}<br>
 		<label type="subject" name="places">{{ $trip->places }}<br>
-		{{ $trip->updated_at->diffForHumans() }}<br>
+		{{ $trip->created_at->diffForHumans() }}<br>
 		<a href="{{ route('trips.edit', $trip) }}">{{ __('edit') }}</a><br>
-		<button class="button buttonGreen">{{ __('Join a trip') }}</button>
 	</form>
 
 @endsection

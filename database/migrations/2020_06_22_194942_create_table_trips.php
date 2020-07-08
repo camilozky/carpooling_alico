@@ -18,9 +18,9 @@ class CreateTableTrips extends Migration
             $table->boolean('approved');
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent();
-            $table->char('name', 100);
+            $table->char('nameDriver', 100);
             $table->string('email')->unique()->index();
-            $table->bigInteger('phonenumber');
+            $table->bigInteger('phoneNumber');
             $table->date('datePickup');
             $table->text('timePickup');
             $table->text('placePickup');

@@ -26,9 +26,9 @@ class SaveTripRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'=>'required|string',
+            'nameDriver'=>'required|string',
             'email'=>'required|email:rfc,dns',
-            'phonenumber'=>'required|numeric',
+            'phoneNumber'=>'required|numeric',
             'datePickup'=>'required|date|after_or_equal:yesterday',
             'timePickup'=>'required',
             'placePickup'=>'required',
