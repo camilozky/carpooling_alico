@@ -1,8 +1,11 @@
 	{
 
+	"passengerName": "Nombre del Pasajero",
+	"emailPassenger": "Correo del Pasajero",
+	"phonenumberPassenger": "Teléfono del Pasajero",
 	"The Date Pickup must be later than or equal to today.": "Fecha de recogida debe ser una fecha posterior o igual a hoy.",
 	"phonenumber": "Numero telefónico",
-	"destined": "destinado",
+	"destined": "con destino",
 	"edit": "Editar",
 	"update": "Actualizar",
 	"Enter timePickup": "Escribe hora del Viaje",

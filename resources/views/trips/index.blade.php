@@ -44,10 +44,10 @@
 				<a href="{{ route ('trips.show', $tripsItem) }}">
 					{{ __('placeDropoff') }}: {{ $tripsItem->placeDropoff }}<br>
 					<small>
-						{{ __('name') }}: {{ $tripsItem->name }}<br>
+						{{ __('name') }}: {{ $tripsItem->nameDriver }}<br>
 						{{ __('timePickup') }}: {{ $tripsItem->timePickup }}<br>
 						{{ __('seats') }}: {{ $tripsItem->seats }}<br>
-					</a>{{ $tripsItem->updated_at->diffForHumans() }}
+					</a>{{ $tripsItem->created_at->diffForHumans() }}
 				</small>
 			</li>
 		@empty

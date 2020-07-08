@@ -1,15 +1,16 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Trip;
-use Kreait\Firebase;
-use Kreait\Firebase\Factory;
-use Illuminate\Http\Request;
-use Kreait\Firebase\Database;
-use App\Mail\MessageReceived;
-use Kreait\Firebase\ServiceAccount;
-use Illuminate\Support\Facades\Mail;
+use App\Http\Requests\JoinTripRequest;
 use App\Http\Requests\SaveTripRequest;
+use App\Mail\MessageReceived;
+use App\Trip;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use Kreait\Firebase;
+use Kreait\Firebase\Database;
+use Kreait\Firebase\Factory;
+use Kreait\Firebase\ServiceAccount;
 
 class TripController extends Controller
 {
@@ -137,6 +138,13 @@ class TripController extends Controller
         ]);
     }
 
+    public function sign(Trip $trip)
+    {
+        return view('trips.sign' , [
+            'trip' => $trip
+        ]);
+    }
+
     public function update(Trip $trip, SaveTripRequest $request)
     {
         $validatedRequestFields = $request->validated();
@@ -170,6 +178,20 @@ class TripController extends Controller
         // ]);
 
         Mail::to($validatedRequestFields['email'])->queue(new MessageReceived($validatedRequestFields));
+        return redirect()->route('trips.show', $trip);
+    }
+
+    public function join(Trip $trip, JoinTripRequest $request)
+    {
+        // $seatsAvailable = $trip->seats-$request->seatsPassenger;
+        // $trip->seats = $seatsAvailable;
+        $validatedRequestFields = $request->validated();
+
+        $trip->update($validatedRequestFields);
+        // $trip->update(['seats'=> validatedRequestFields('seats')-validatedRequestFields('seatsPassenger'),]);
+
+        // Mail::to($validatedRequestFields['email'])->queue(new MessageReceived($validatedRequestFields));
+
         return redirect()->route('trips.show', $trip);
     }
 
