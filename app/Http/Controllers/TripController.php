@@ -51,7 +51,9 @@ class TripController extends Controller
      */
     public function create()
     {
-        return view('trips.create');
+        return view('trips.create', [
+            'trip' => new Trip
+        ]);
     }
 
     /**

@@ -10,7 +10,7 @@ use Illuminate\Queue\SerializesModels;
 class MessageEdited extends Mailable
 {
     use Queueable, SerializesModels;
-    public $subject = "Acabaste de modificar un viaje";
+    public $subject = "Acabas de modificar un viaje";
     public $validatedRequestFields;
 
     /**
