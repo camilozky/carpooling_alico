@@ -2,16 +2,17 @@
 
 namespace App\Mail;
 
+use App\Trip;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class MessageReceived extends Mailable
+class MessageJoin extends Mailable
 {
     use Queueable, SerializesModels;
+    public $subject = "Acabas de unirte a un viaje";
     public $validatedRequestFields;
-    public $subject = "Acabas de crear un viaje";
 
     /**
      * Create a new message instance.
@@ -30,6 +31,6 @@ class MessageReceived extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.message-received');
+        return $this->view('emails.message-joined');
     }
 }

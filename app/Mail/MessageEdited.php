@@ -7,11 +7,11 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class MessageReceived extends Mailable
+class MessageEdited extends Mailable
 {
     use Queueable, SerializesModels;
+    public $subject = "Acabaste de modificar un viaje";
     public $validatedRequestFields;
-    public $subject = "Acabas de crear un viaje";
 
     /**
      * Create a new message instance.
@@ -30,6 +30,6 @@ class MessageReceived extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.message-received');
+        return $this->view('emails.message-edited');
     }
 }

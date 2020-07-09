@@ -1,15 +1,19 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Trip;
-use Kreait\Firebase;
-use Kreait\Firebase\Factory;
-use Illuminate\Http\Request;
-use Kreait\Firebase\Database;
-use App\Mail\MessageReceived;
-use Kreait\Firebase\ServiceAccount;
-use Illuminate\Support\Facades\Mail;
+use App\Http\Requests\JoinTripRequest;
 use App\Http\Requests\SaveTripRequest;
+use App\Mail\MessageEdited;
+use App\Mail\MessageJoin;
+use App\Mail\MessageReceived;
+use App\Mail\MessageSomeoneJoined;
+use App\Trip;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use Kreait\Firebase;
+use Kreait\Firebase\Database;
+use Kreait\Firebase\Factory;
+use Kreait\Firebase\ServiceAccount;
 
 class TripController extends Controller
 {
@@ -169,9 +173,37 @@ class TripController extends Controller
         //     'places'=> request('places'),
         // ]);
 
-        Mail::to($validatedRequestFields['email'])->queue(new MessageReceived($validatedRequestFields));
+        Mail::to($validatedRequestFields['email'])->queue(new MessageEdited($validatedRequestFields));
         return redirect()->route('trips.show', $trip);
     }
+
+    public function sign(Trip $trip)
+    {
+        return view('trips.sign' , [
+            'trip' => $trip
+        ]);
+    }
+
+    public function join(Trip $trip, JoinTripRequest $request)
+    {
+        $validatedRequestFields = $request->validated();
+        $passengerNameCollection= $validatedRequestFields['passengerName'] . ', ' . $trip['passengerName'];
+        $emailPassengerCollection= $validatedRequestFields['emailPassenger'] . ', ' . $trip['emailPassenger'];
+        $phonenumberPassengerCollection= $validatedRequestFields['phonenumberPassenger'] . ', ' . $trip['phonenumberPassenger'];
+
+        $trip->update([
+            'passengerName'=> $passengerNameCollection,
+            'emailPassenger'=> $emailPassengerCollection,
+            'phonenumberPassenger'=> $phonenumberPassengerCollection,
+            'seats'=> $trip['seats']-1,
+        ]);
+
+        Mail::to($validatedRequestFields['emailPassenger'])->queue(new MessageJoin($validatedRequestFields));
+        Mail::to($validatedRequestFields['email'])->queue(new MessageSomeoneJoined($validatedRequestFields));
+
+        return redirect()->route('trips.index');
+    }
+
 
     public function destroy($id)
     {

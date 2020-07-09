@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class SaveTripRequest extends FormRequest
+class JoinTripRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -29,20 +29,26 @@ class SaveTripRequest extends FormRequest
             'nameDriver'=>'required|string',
             'email'=>'required|email:rfc,dns',
             'phoneNumber'=>'required|numeric|min:7',
-            'datePickup'=>'required|date|after_or_equal:yesterday',
+            'datePickup'=>'required|date',
             'timePickup'=>'required',
             'placePickup'=>'required',
             'placeDropoff'=>'required',
-            'seats'=>'required|numeric|min:1|max:4',
+            'seats'=>'required|numeric',
             'meetingPlace'=>'required',
-            'places'=>'required|min:3'
+            'places'=>'required|min:3',
+            'passengerName'=>'required|string',
+            'emailPassenger'=>'required|email:rfc,dns',
+            'phonenumberPassenger'=>'required|numeric|min:7'
         ];
     }
-
-    public function messages()
+        public function messages()
     {
         return[
-            'datePickup.after_or_equal'=>__('The Date Pickup must be later than or equal to today.')
+            'passengerName.required' => 'El Nombre del Pasajero es obligatorio.',
+            'emailPassenger.required' => 'El Correo del Pasajero es obligatorio.',
+            'emailPassenger.email' => 'El Correo del Pasajero no es un correo válido.',
+            'phonenumberPassenger.required' => 'El Teléfono del Pasajero es obligatorio.',
+            'phonenumberPassenger.numeric' => 'El Teléfono del Pasajero debe ser numerico.',
         ];
     }
 }

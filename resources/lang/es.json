@@ -1,12 +1,19 @@
 	{
 
+
+	"and": "y",
+	"You just joined a trip with the following information:": "Acaba de unirse a un viaje con la siguiente información:",
+	"You just updated a trip with the mail:": "Acabas de modificar un viaje con el correo:",
+	"You just created a trip with the mail:": "Acabas de crear un viaje con el correo:",
+	"passengerName": "Nombre de los pasajeros",
+	"emailPassenger": "correo electrónico de los pasajeros",
+	"phonenumberPassenger": "Numero telefónico de los pasajeros",
+	"Passenger information": "Información de los pasajeros",
+	"Trip information": "Información del Viaje",
 	"The Date Pickup must be later than or equal to today.": "Fecha de recogida debe ser una fecha posterior o igual a hoy.",
 	"nameDriver": "Nombre del Conductor",
 	"phoneNumber": "Numero telefónico",
-	"phoneNumber": "Numero telefónico",
-	"phoneNumber": "Numero telefónico",
-	"phoneNumber": "Numero telefónico",
-	"destined": "destinado",
+	"destined": "con destino",
 	"edit": "Editar",
 	"update": "Actualizar",
 	"Enter timePickup": "Escribe hora del Viaje",

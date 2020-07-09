@@ -28,6 +28,10 @@ class CreateTableTrips extends Migration
             $table->enum('seats', ['1', '2', '3', '4']);
             $table->text('meetingPlace');
             $table->text('places');
+            $table->text('passengerName', )->nullable();
+            $table->text('emailPassenger')->nullable();
+            $table->text('phonenumberPassenger')->nullable();
+
             // $table->decimal('carbonFootprint', 8, 2);
         });
     }
