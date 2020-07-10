@@ -29,7 +29,7 @@
 	}
 	</style>
 	<form method="POST" action="{{ route('trips.join', $trip) }}">
-		@method('PATCH')
+		@csrf @method('PATCH')
 		@include('trips._form-sign-info-passenger')
 		@include('trips._form-sign-info-trip')
 		<button class="button buttonGreen">{{ __('Join a trip') }}</button>

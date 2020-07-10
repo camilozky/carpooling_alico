@@ -7,6 +7,7 @@ use App\Mail\MessageEdited;
 use App\Mail\MessageJoin;
 use App\Mail\MessageReceived;
 use App\Mail\MessageSomeoneJoined;
+use App\Mail\MessageTripDeleted;
 use App\Trip;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -207,8 +208,10 @@ class TripController extends Controller
     }
 
 
-    public function destroy($id)
+    public function destroy(Trip $trip)
     {
-        //
+        Mail::to($trip['email'])->queue(new MessageTripDeleted($trip));
+        $trip->delete();
+        return redirect()->route('trips.index');
     }
 }

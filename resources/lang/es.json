@@ -1,10 +1,10 @@
 	{
-
-
+	"delete": "Eliminar",
 	"and": "y",
 	"You just joined a trip with the following information:": "Acaba de unirse a un viaje con la siguiente información:",
 	"You just updated a trip with the mail:": "Acabas de modificar un viaje con el correo:",
 	"You just created a trip with the mail:": "Acabas de crear un viaje con el correo:",
+	"You just deleted a trip with the mail:": "Acabas de eliminar un viaje con el correo:",
 	"passengerName": "Nombre de los pasajeros",
 	"emailPassenger": "correo electrónico de los pasajeros",
 	"phonenumberPassenger": "Numero telefónico de los pasajeros",

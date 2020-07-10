@@ -85,6 +85,9 @@ Route::patch('/viajes/{trip}', 'TripController@update')->name('trips.update');
 Route::get('/viajes/{trip}/inscrirse', 'TripController@sign')->name('trips.sign');
 Route::patch('/viajes/{trip}/unirse', 'TripController@join')->name('trips.join');
 
+Route::delete('/viajes/{trip}', 'TripController@destroy')->name('trips.destroy');
+
+
 Route::view('/realizar-un-viaje', 'maketrip')->name('maketrip');
 Route::view('/unirse-a-un-viaje', 'jointrip')->name('jointrip');
 
