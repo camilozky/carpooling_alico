@@ -1,4 +1,8 @@
 	{
+	"The trip has been successfully created ": "El viaje ha sido creado satisfactoriamente",
+	"The trip has been successfully modified ": "El viaje ha sido modificado satisfactoriamente ",
+	"You have joined the successfully trip ": "Te has unido al viaje satisfactoriamente ",
+	"The trip has been successfully eliminated ": "El viaje ha sido eliminado satisfactoriamente ",
 	"delete": "Eliminar",
 	"and": "y",
 	"You just joined a trip with the following information:": "Acaba de unirse a un viaje con la siguiente información:",

@@ -6,4 +6,5 @@
 		{{-- firebase --}}
 		{{-- <li class="{{setActive('maketrip')}}"><a href="{{ route('maketrip') }}">{{ __('Make a trip') }}</a></li> --}}
 	</ul>
+
 </nav>

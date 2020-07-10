@@ -105,7 +105,7 @@ class TripController extends Controller
         // Mail::to(request('email'))->queue(new MessageReceived($validatedRequestFields));
         // return new MessageReceived($validatedRequestFields);
 
-        return redirect()->route('trips.index');
+        return redirect()->route('trips.index')->with('status', __('The trip has been successfully created '));
         // $newPost->getKey(); // => -KVr5eu8gcTv7_AHb-3-
         //$newPost->get1Uri(); // => https://my-project.firebaseio.com/blog/posts/-KVr5eu8gcTv7_AHb-3-
         //$newPost->getChild('title')->set('Changed post title');
@@ -177,7 +177,7 @@ class TripController extends Controller
         // ]);
 
         Mail::to($validatedRequestFields['email'])->queue(new MessageEdited($validatedRequestFields));
-        return redirect()->route('trips.show', $trip);
+        return redirect()->route('trips.show', $trip)->with('status', __('The trip has been successfully modified '));
     }
 
     public function sign(Trip $trip)
@@ -204,7 +204,7 @@ class TripController extends Controller
         Mail::to($validatedRequestFields['emailPassenger'])->queue(new MessageJoin($validatedRequestFields));
         Mail::to($validatedRequestFields['email'])->queue(new MessageSomeoneJoined($validatedRequestFields));
 
-        return redirect()->route('trips.index');
+        return redirect()->route('trips.index')->with('status', __('You have joined the successfully trip '));;
     }
 
 
@@ -212,6 +212,6 @@ class TripController extends Controller
     {
         Mail::to($trip['email'])->queue(new MessageTripDeleted($trip));
         $trip->delete();
-        return redirect()->route('trips.index');
+        return redirect()->route('trips.index')->with('status', __('The trip has been successfully eliminated '));;
     }
 }
