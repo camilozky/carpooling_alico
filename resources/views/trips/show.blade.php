@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('title', 'Unirse al viaje hacia | ' .$trip->placeDropoff)
+@section('title', 'Detalle del viaje hacia | ' .$trip->placeDropoff)
 
 @section('content')
 
@@ -26,9 +26,22 @@
 	}
 </style>
 
+@include('trips._form-sign-info-trip')
 
-	<form method="POST" action="{{ route('trips.update', $trip) }}">
-		@csrf @method('PATCH')
-		@include('trips._form-show')
-	</form>
+@if($trip->passengerName <> NULL)
+{{ __('Passenger information') }}<br>
+{{ __('passengerName') }}<br>
+<label name="passengerName" >{{ $trip->passengerName }}<br>
+{{ __('emailPassenger') }}<br>
+<label name="emailPassenger" >{{ $trip->emailPassenger }}<br>
+{{ __('phonenumberPassenger') }}<br>
+<label name="phonenumberPassenger" >{{ $trip->phonenumberPassenger }}<br>
+@else
+<a href="{{ route('trips.edit', $trip) }}">{{ __('edit') }}</a><br>
+@endif
+@if($trip->seats > 0)
+	<a href="{{ route('trips.sign', $trip) }}">{{ __('Join a trip') }}</a><br>
+@else
+@endif
+
 @endsection

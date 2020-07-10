@@ -30,7 +30,8 @@
 	</style>
 	<form method="POST" action="{{ route('trips.join', $trip) }}">
 		@method('PATCH')
-		@include('trips._form-sign')
+		@include('trips._form-sign-info-passenger')
+		@include('trips._form-sign-info-trip')
 		<button class="button buttonGreen">{{ __('Join a trip') }}</button>
 	</form>
 	@include('trips._form-sign-passenger')
