@@ -1,50 +1,70 @@
-@extends('layout')
+@extends('layouts.app')
 
 @section('title', 'Detalle del viaje hacia | ' .$trip->placeDropoff)
 
 @section('content')
+<div class="container">
+	<div class="row justify-content-center">
+		<div class="col-md-8">
+			<div class="card">
+				<div class="card-header">{{ __('Trip information') }} {{ __('destined') }}: {{ $trip->placeDropoff}}</div>
+				<div class="card-body">
+					@include('trips._form-sign-info-trip')
+					@if($trip->passengerName <> NULL)
+					<div class="card-header">{{ __('Passenger information') }}</div>
+					<div class="card-body">
+						<div class="form-group row">
+							<label for="nameDriver" class="col-md-4 col-form-label text-md-right">{{ __('nameDriver') }}</label>
+							<div class="col-md-6">
+								<input id="nameDriver" type="text" class="form-control" name="nameDriver" readonly value="{{ $trip->nameDriver }}" required autocomplete="nameDriver" autofocus>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="passengerName" class="col-md-4 col-form-label text-md-right">{{ __('passengerName') }}</label>
+							<div class="col-md-6">
+								<input id="passengerName" type="text" class="form-control" name="passengerName" readonly value="{{ $trip->passengerName }}" required autocomplete="passengerName" autofocus>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="emailPassenger" class="col-md-4 col-form-label text-md-right">{{ __('emailPassenger') }}</label>
+							<div class="col-md-6">
+								<input id="emailPassenger" type="text" class="form-control" name="emailPassenger" readonly value="{{ $trip->emailPassenger }}" required autocomplete="emailPassenger" autofocus>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="phonenumberPassenger" class="col-md-4 col-form-label text-md-right">{{ __('phonenumberPassenger') }}</label>
+							<div class="col-md-6">
+								<input id="phonenumberPassenger" type="text" class="form-control" name="phonenumberPassenger" readonly value="{{ $trip->phonenumberPassenger }}" required autocomplete="phonenumberPassenger" autofocus>
+							</div>
+						</div>
+						@else
+						<div class="form-group row mb-0">
+							<div class="col-md-6 offset-md-4">
+								<a href="{{ route('trips.edit', $trip) }}">{{ __('edit') }}</a><br>
+							</div>
+						</div>
 
-	<h1>{{ __('placeDropoff') }}: {{ $trip->placeDropoff}}</h1>
-	<style>
-	.button
-	{
-		border: none;
-		color: white;
-		padding: 15px 32px;
-		text-align: center;
-		text-decoration: none;
-		display: inline-block;
-		font-size: 16px;
-		margin: 4px 2px;
-		cursor: pointer;
-	}
-	.buttonGreen {background-color: #006400;} /* Green */
-	.red
-	{
-		font-size: smaller;
-		color: red
-	}
-</style>
+						<div class="form-group row mb-0">
+							<div class="col-md-6 offset-md-4">
+								<form method="POST" action="{{ route('trips.destroy', $trip) }}">
+									@csrf @method('DELETE')
+									<button>{{ __('delete') }}</button>
+								</form>
+							</div>
+						</div>
 
-@include('trips._form-sign-info-trip')
-
-@if($trip->passengerName <> NULL)
-	{{ __('Passenger information') }}<br>
-	{{ __('passengerName') }}<br>
-	<label name="passengerName" >{{ $trip->passengerName }}<br>
-	{{ __('emailPassenger') }}<br>
-	<label name="emailPassenger" >{{ $trip->emailPassenger }}<br>
-	{{ __('phonenumberPassenger') }}<br>
-	<label name="phonenumberPassenger" >{{ $trip->phonenumberPassenger }}<br>
-@else
-	<a href="{{ route('trips.edit', $trip) }}">{{ __('edit') }}</a><br>
-	<form method="POST" action="{{ route('trips.destroy', $trip) }}">
-		@csrf @method('DELETE')
-		<button>{{ __('delete') }}</button>
-	</form>
-@endif
-@if($trip->seats > 0)
-	<a href="{{ route('trips.sign', $trip) }}">{{ __('Join a trip') }}</a><br>
-@endif
-
+						@endif
+						<div class="form-group row mb-0">
+							<div class="col-md-6 offset-md-4">
+								@if($trip->seats > 0)
+								<a href="{{ route('trips.sign', $trip) }}">{{ __('Join a trip') }}</a>
+								@endif
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 @endsection
