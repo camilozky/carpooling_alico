@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layouts.app')
 
 @section('title', 'Unirse al Viaje hacia | ' .$trip->placeDropoff)
 
