@@ -93,3 +93,7 @@ Route::view('/unirse-a-un-viaje', 'jointrip')->name('jointrip');
 
 Route::get('/phpfirebase_sdk','FirebaseController@index');
 // Route::resource('trips','TripController');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
