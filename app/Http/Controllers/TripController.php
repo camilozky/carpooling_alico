@@ -190,9 +190,9 @@ class TripController extends Controller
     public function join(Trip $trip, JoinTripRequest $request)
     {
         $validatedRequestFields = $request->validated();
-        $passengerNameCollection= $validatedRequestFields['passengerName'] . ', ' . $trip['passengerName'];
-        $emailPassengerCollection= $validatedRequestFields['emailPassenger'] . ', ' . $trip['emailPassenger'];
-        $phonenumberPassengerCollection= $validatedRequestFields['phonenumberPassenger'] . ', ' . $trip['phonenumberPassenger'];
+        $passengerNameCollection= $validatedRequestFields['passengerName'] . ' | ' . $trip['passengerName'];
+        $emailPassengerCollection= $validatedRequestFields['emailPassenger'] . ' | ' . $trip['emailPassenger'];
+        $phonenumberPassengerCollection= $validatedRequestFields['phonenumberPassenger'] . ' | ' . $trip['phonenumberPassenger'];
 
         $trip->update([
             'passengerName'=> $passengerNameCollection,

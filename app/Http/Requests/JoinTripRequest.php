@@ -27,7 +27,7 @@ class JoinTripRequest extends FormRequest
     {
         return [
             'nameDriver'=>'required|string',
-            'email'=>'required|email:rfc,dns',
+            'email'=>'required|email',
             'phoneNumber'=>'required|numeric|min:7',
             'datePickup'=>'required|date',
             'timePickup'=>'required',
