@@ -48,7 +48,9 @@
 							<div class="col-md-6 offset-md-4">
 								<form method="POST" action="{{ route('trips.destroy', $trip) }}">
 									@csrf @method('DELETE')
-									<button>{{ __('delete') }}</button>
+									<button type="submit" class="btn btn-primary">
+										{{ __('delete') }}
+									</button>
 								</form>
 							</div>
 						</div>
