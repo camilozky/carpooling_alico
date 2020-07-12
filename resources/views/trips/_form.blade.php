@@ -47,7 +47,7 @@
 	<label for="datePickup" class="col-md-4 col-form-label text-md-right">{{ __('datePickup') }}</label>
 
 	<div class="col-md-6">
-		<input id="datePickup" type="date"  class="form-control @error('datePickup') is-invalid @enderror" name="datePickup" value="{{old('datePickup', now())}}" required autocomplete="datePickup" autofocus>
+		<input id="datePickup" type="date"  class="form-control @error('datePickup') is-invalid @enderror" name="datePickup" value="{{old('datePickup', $trip->datePickup)}}" required autocomplete="datePickup" autofocus>
 
 		@error('datePickup')
 		<span class="invalid-feedback" role="alert">
@@ -61,7 +61,7 @@
 	<label for="timePickup" class="col-md-4 col-form-label text-md-right">{{ __('timePickup') }}</label>
 
 	<div class="col-md-6">
-		<input id="timePickup" type="time"  class="form-control @error('timePickup') is-invalid @enderror" name="timePickup" value="{{old('timePickup', now())}}" required autocomplete="timePickup" autofocus>
+		<input id="timePickup" type="time"  class="form-control @error('timePickup') is-invalid @enderror" name="timePickup" value="{{old('timePickup', $trip->timePickup)}}" required autocomplete="timePickup" autofocus>
 
 		@error('timePickup')
 		<span class="invalid-feedback" role="alert">
