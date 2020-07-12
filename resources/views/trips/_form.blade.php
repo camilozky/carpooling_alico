@@ -1,32 +1,155 @@
 @csrf
-{{ __('Enter Name') }}<br>
-<input name="nameDriver" placeholder="{{ __('Enter Name') }}" value="{{old('nameDriver', $trip->nameDriver)}}"><br>
-{!! $errors->first('nameDriver','<small class="red">:message</small><br>')!!}
-{{ __('Enter Email') }}<br>
-<input type="email" name="email" placeholder="{{ __('Enter Email') }}" value="{{old('email', $trip->email)}}"><br>
-{!! $errors->first('email','<small class="red">:message</small><br>')!!}
-{{ __('Enter whatsApp') }}<br>
-<input type="tel" name="phoneNumber" placeholder="{{ __('Enter whatsApp') }}" value="{{old('phoneNumber', $trip->phoneNumber)}}"><br>
-{!! $errors->first('phoneNumber','<small class="red">:message</small><br>')!!}
-{{ __('Enter datePickup') }}<br>
-<input type="date" name="datePickup" placeholder="Enter pickup Date" value="{{old('datePickup', $trip->datePickup)}}"><br>
-{!! $errors->first('datePickup','<small class="red">:message</small><br>')!!}
-{{ __('Enter timePickup') }}<br>
-<input type="time" name="timePickup" placeholder="Enter pickup Time" value="{{old('timePickup', $trip->timePickup)}}"><br>
-{!! $errors->first('timePickup','<small class="red">:message</small><br>')!!}
-{{ __('Enter pickup location') }}<br>
-<input type="subject" name="placePickup" placeholder="{{ __('Enter pickup location') }}" value="{{old('placePickup', $trip->placePickup)}}"><br>
-{!! $errors->first('placePickup','<small class="red">:message</small><br>')!!}
-{{ __('Enter destination') }}<br>
-<input type="subject" name="placeDropoff" placeholder="{{ __('Enter destination') }}" value="{{old('placeDropoff', $trip->placeDropoff)}}"><br>
-{!! $errors->first('placeDropoff','<small class="red">:message</small><br>')!!}
-{{ __('Enter seats') }}<br>
-<input type="number" name="seats" placeholder="{{ __('Enter seats') }}"value="{{old('seats', $trip->seats)}}"><br>
-{!! $errors->first('seats','<small class="red">:message</small><br>')!!}
-{{ __('Enter a meeting place') }}<br>
-<input type="subject" name="meetingPlace" placeholder="{{ __('Enter a metting place') }}"value="{{old('meetingPlace', $trip->meetingPlace)}}"><br>
-{!! $errors->first('meetingPlace','<small class="red">:message</small><br>')!!}
-{{ __('Enter places') }}<br>
-<input type="subject" name="places"  placeholder="{{ __('Enter places destination') }}"value="{{old('places', $trip->places)}}"><br>
-{!! $errors->first('places','<small class="red">:message</small><br>')!!}
-<button class="button buttonGreen">{{__($btnText)}}</button>
+
+<div class="form-group row">
+	<label for="nameDriver" class="col-md-4 col-form-label text-md-right">{{ __('nameDriver') }}</label>
+
+	<div class="col-md-6">
+		<input id="nameDriver" type="text" placeholder="{{ __('nameDriver') }}" class="form-control @error('nameDriver') is-invalid @enderror" name="nameDriver" value="{{old('nameDriver', $trip->nameDriver)}}" required autocomplete="nameDriver" autofocus>
+
+		@error('nameDriver')
+		<span class="invalid-feedback" role="alert">
+			<strong>{{ $message }}</strong>
+		</span>
+		@enderror
+	</div>
+</div>
+
+<div class="form-group row">
+	<label for="nameDriver" class="col-md-4 col-form-label text-md-right">{{ __('nameDriver') }}</label>
+
+	<div class="col-md-6">
+		<input id="email" type="text" placeholder="{{ __('email') }}" class="form-control @error('email') is-invalid @enderror" name="email" value="{{old('email', $trip->email)}}" required autocomplete="email" autofocus>
+
+		@error('email')
+		<span class="invalid-feedback" role="alert">
+			<strong>{{ $message }}</strong>
+		</span>
+		@enderror
+	</div>
+</div>
+
+<div class="form-group row">
+	<label for="phoneNumber" class="col-md-4 col-form-label text-md-right">{{ __('phoneNumber') }}</label>
+
+	<div class="col-md-6">
+		<input id="phoneNumber" type="text" placeholder="{{ __('phoneNumber') }}" class="form-control @error('phoneNumber') is-invalid @enderror" name="phoneNumber" value="{{old('phoneNumber', $trip->phoneNumber)}}" required autocomplete="phoneNumber" autofocus>
+
+		@error('phoneNumber')
+		<span class="invalid-feedback" role="alert">
+			<strong>{{ $message }}</strong>
+		</span>
+		@enderror
+	</div>
+</div>
+
+
+<div class="form-group row">
+	<label for="datePickup" class="col-md-4 col-form-label text-md-right">{{ __('datePickup') }}</label>
+
+	<div class="col-md-6">
+		<input id="datePickup" type="date"  class="form-control @error('datePickup') is-invalid @enderror" name="datePickup" value="{{old('datePickup', now())}}" required autocomplete="datePickup" autofocus>
+
+		@error('datePickup')
+		<span class="invalid-feedback" role="alert">
+			<strong>{{ $message }}</strong>
+		</span>
+		@enderror
+	</div>
+</div>
+
+<div class="form-group row">
+	<label for="timePickup" class="col-md-4 col-form-label text-md-right">{{ __('timePickup') }}</label>
+
+	<div class="col-md-6">
+		<input id="timePickup" type="time"  class="form-control @error('timePickup') is-invalid @enderror" name="timePickup" value="{{old('timePickup', now())}}" required autocomplete="timePickup" autofocus>
+
+		@error('timePickup')
+		<span class="invalid-feedback" role="alert">
+			<strong>{{ $message }}</strong>
+		</span>
+		@enderror
+	</div>
+</div>
+
+<div class="form-group row">
+	<label for="placePickup" class="col-md-4 col-form-label text-md-right">{{ __('placePickup') }}</label>
+
+	<div class="col-md-6">
+		<input id="placePickup" type="text" placeholder="{{ __('placePickup') }}" class="form-control @error('placePickup') is-invalid @enderror" name="placePickup" value="{{old('placePickup', $trip->placePickup)}}" required autocomplete="placePickup" autofocus>
+
+		@error('placePickup')
+		<span class="invalid-feedback" role="alert">
+			<strong>{{ $message }}</strong>
+		</span>
+		@enderror
+	</div>
+</div>
+
+<div class="form-group row">
+	<label for="placeDropoff" class="col-md-4 col-form-label text-md-right">{{ __('placeDropoff') }}</label>
+
+	<div class="col-md-6">
+		<input id="placeDropoff" type="text" placeholder="{{ __('placeDropoff') }}" class="form-control @error('placeDropoff') is-invalid @enderror" name="placeDropoff" value="{{old('placeDropoff', $trip->placeDropoff)}}" required autocomplete="placeDropoff" autofocus>
+
+		@error('placeDropoff')
+		<span class="invalid-feedback" role="alert">
+			<strong>{{ $message }}</strong>
+		</span>
+		@enderror
+	</div>
+</div>
+
+
+<div class="form-group row">
+	<label for="seats" class="col-md-4 col-form-label text-md-right">{{ __('seats') }}</label>
+
+	<div class="col-md-6">
+		<select name="seats" id="seats">
+			<option value="1">1</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+			<option value="4">4</option>
+		</select>
+		@error('seats')
+		<span class="invalid-feedback" role="alert">
+			<strong>{{ $message }}</strong>
+		</span>
+		@enderror
+	</div>
+</div>
+
+<div class="form-group row">
+	<label for="meetingPlace" class="col-md-4 col-form-label text-md-right">{{ __('meetingPlace') }}</label>
+
+	<div class="col-md-6">
+		<input id="meetingPlace" type="text" placeholder="{{ __('meetingPlace') }}" class="form-control @error('meetingPlace') is-invalid @enderror" name="meetingPlace" value="{{old('meetingPlace', $trip->meetingPlace)}}" required autocomplete="meetingPlace" autofocus>
+
+		@error('meetingPlace')
+		<span class="invalid-feedback" role="alert">
+			<strong>{{ $message }}</strong>
+		</span>
+		@enderror
+	</div>
+</div>
+
+<div class="form-group row">
+	<label for="places" class="col-md-4 col-form-label text-md-right">{{ __('places') }}</label>
+
+	<div class="col-md-6">
+		<input id="places" type="text" placeholder="{{ __('places') }}" class="form-control @error('places') is-invalid @enderror" name="places" value="{{old('places', $trip->places)}}" required autocomplete="places" autofocus>
+
+		@error('places')
+		<span class="invalid-feedback" role="alert">
+			<strong>{{ $message }}</strong>
+		</span>
+		@enderror
+	</div>
+</div>
+
+<div class="form-group row mb-0">
+	<div class="col-md-6 offset-md-4">
+		<button type="submit" class="btn btn-primary">
+			{{__($btnText)}}
+		</button>
+	</div>
+</div>

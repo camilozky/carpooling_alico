@@ -23,12 +23,6 @@
 	</div>
 </div>
 <div class="form-group row">
-	<label for="datePickup" class="col-md-4 col-form-label text-md-right">{{ __('datePickup') }}</label>
-	<div class="col-md-6">
-		<input id="datePickup" type="text" class="form-control" name="datePickup" readonly value="{{ $trip->datePickup }}" required autocomplete="datePickup" autofocus>
-	</div>
-</div>
-<div class="form-group row">
 	<label for="timePickup" class="col-md-4 col-form-label text-md-right">{{ __('timePickup') }}</label>
 	<div class="col-md-6">
 		<input id="timePickup" type="text" class="form-control" name="timePickup" readonly value="{{ $trip->timePickup }}" required autocomplete="timePickup" autofocus>
