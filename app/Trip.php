@@ -16,8 +16,8 @@ class Trip extends Model
     //you can only be enabled if you are validating the fields of the ui
     protected $guarded=[];
 
-    public function getRouteKeyName()
-    {
-		return 'email';
-    }
+            public function getRouteKeyName()
+            {
+        		return 'email';
+            }
 }

@@ -15,7 +15,7 @@
 </div>
 
 <div class="form-group row">
-	<label for="nameDriver" class="col-md-4 col-form-label text-md-right">{{ __('nameDriver') }}</label>
+	<label for="email" class="col-md-4 col-form-label text-md-right">{{ __('email') }}</label>
 
 	<div class="col-md-6">
 		<input id="email" type="text" placeholder="{{ __('email') }}" class="form-control @error('email') is-invalid @enderror" name="email" value="{{old('email', $trip->email)}}" required autocomplete="email" autofocus>
