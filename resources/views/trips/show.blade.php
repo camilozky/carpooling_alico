@@ -38,31 +38,33 @@
 							</div>
 						</div>
 						@else
-						<div class="form-group row mb-0">
-							<div class="col-md-6 offset-md-4">
-								<a href="{{ route('trips.edit', $trip) }}">{{ __('edit') }}</a><br>
+						@auth
+							<div class="form-group row mb-0">
+								<div class="col-md-6 offset-md-4">
+									<a href="{{ route('trips.edit', $trip) }}">{{ __('edit') }}</a><br>
+								</div>
 							</div>
-						</div>
 
-						<div class="form-group row mb-0">
-							<div class="col-md-6 offset-md-4">
-								<form method="POST" action="{{ route('trips.destroy', $trip) }}">
-									@csrf @method('DELETE')
-									<button type="submit" class="btn btn-primary">
-										{{ __('delete') }}
-									</button>
-								</form>
+							<div class="form-group row mb-0">
+								<div class="col-md-6 offset-md-4">
+									<form method="POST" action="{{ route('trips.destroy', $trip) }}">
+										@csrf @method('DELETE')
+										<button type="submit" class="btn btn-primary">
+											{{ __('delete') }}
+										</button>
+									</form>
+								</div>
 							</div>
-						</div>
 
-						@endif
-						<div class="form-group row mb-0">
-							<div class="col-md-6 offset-md-4">
-								@if($trip->seats > 0)
-								<a href="{{ route('trips.sign', $trip) }}">{{ __('Join a trip') }}</a>
-								@endif
+							@endif
+							<div class="form-group row mb-0">
+								<div class="col-md-6 offset-md-4">
+									@if($trip->seats > 0)
+									<a href="{{ route('trips.sign', $trip) }}">{{ __('Join a trip') }}</a>
+									@endif
+								</div>
 							</div>
-						</div>
+						@endauth
 					</div>
 				</div>
 			</div>

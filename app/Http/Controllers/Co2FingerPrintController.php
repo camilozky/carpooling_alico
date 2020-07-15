@@ -8,12 +8,17 @@ use Illuminate\Http\Request;
 
 class Co2FingerPrintController extends Controller
 {
+	public function show()
+	{
+		return view('co2fingerprint.dashboard');
+	}
+
 	public function store(SaveCo2FingerPrintRequest $request)
 	{
 		$validatedRequestFields = $request->validated();
 		Co2FingerPrint::create($validatedRequestFields);
 		// Mail::to($validatedRequestFields['email'])->queue(new MessageReceived($validatedRequestFields));
-		return redirect()->route('home1')->with('status', __('The Co2 footprint has been successfully saved'));
+		return redirect()->route('home')->with('status', __('The Co2 footprint has been successfully saved'));
 	}
 
 }
