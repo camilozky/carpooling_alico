@@ -4,7 +4,9 @@ use Illuminate\Support\Facades\Route;
 
 App::setlocale('es');
 
-Route::get('/', 'TripController@index')->name('home');
+Route::get('/', 'TripController@index')
+	->name('home');
+	// ->middleware('auth')
 
 Route::get('/viajes/crear', 'TripController@create')->name('trips.create');
 Route::post('/viajes', 'TripController@store')->name('trips.store');
@@ -28,7 +30,9 @@ Route::get('/phpfirebase_sdk','FirebaseController@index');
 
 Auth::routes();
 
-Route::view('/home', 'TripController@index')->name('home.redirect');
+Route::get('/home', 'TripController@index')
+	->name('home.redirect');
+	// ->middleware('auth')
 
 Route::get('/dashboard', 'Co2FingerPrintController@show')->name('co2fingerprint.show');
 Route::post('/registrar-huella-carbono', 'Co2FingerPrintController@store')->name('co2fingerprint.store');

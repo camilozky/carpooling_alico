@@ -21,6 +21,12 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
+            $table->float('kilometers');
+            $table->bigInteger('days');
+            $table->float('CO2_emission_factor');
+            $table->float('carbon_footprint');
+            $table->float('carbon_footprint_all_year');
+            $table->string('vehicle');
         });
     }
 

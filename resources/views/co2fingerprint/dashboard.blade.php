@@ -9,11 +9,6 @@
 					@include('partials.validation-errors')
 					<form method="POST" action="{{ route('co2fingerprint.store') }}">
 						@include('trips._form_co2_fingerprint', ['btnText' => 'Register Co2 footprint'])
-						@if (session('status'))
-						<div class="alert alert-success" role="alert">
-							{{ session('status') }}
-						</div>
-						@endif
 					</form>
 				</div>
 			</div>

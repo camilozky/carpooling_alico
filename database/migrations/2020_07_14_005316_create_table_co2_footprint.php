@@ -20,9 +20,9 @@ class CreateTableCo2Footprint extends Migration
             $table->string('email')->unique()->index();
             $table->float('kilometers');
             $table->bigInteger('days');
-            $table->float('CO2_emission_factor')->nullable();;
-            $table->float('carbon_footprint')->nullable();;
-            $table->float('carbon_footprint_all_year')->nullable();;
+            $table->float('CO2_emission_factor')->nullable();
+            $table->float('carbon_footprint')->nullable();
+            $table->float('carbon_footprint_all_year')->nullable();
         });
     }
 

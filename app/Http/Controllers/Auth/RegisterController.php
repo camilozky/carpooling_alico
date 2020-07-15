@@ -29,7 +29,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/dashboard';
+    protected $redirectTo = '/';
     // protected $redirectTo = RouteServiceProvider::HOME;
 
     /**
@@ -54,6 +54,12 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'kilometers' => ['required', 'numeric', 'min:1', 'max:999.99'],
+            'days'=>['required', 'numeric', 'min:1', 'max:7'],
+            'CO2_emission_factor'=>['required', 'numeric', 'min:1', 'max:999999999.99'],
+            'carbon_footprint'=>['required', 'numeric', 'min:1', 'max:999999999.99'],
+            'carbon_footprint_all_year'=>['required', 'numeric', 'min:1', 'max:999999999.99'],
+            'vehicle' => ['required', 'string', 'max:255'],
         ]);
     }
 
@@ -69,6 +75,12 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'kilometers' => $data['kilometers'],
+            'days' => $data['days'],
+            'CO2_emission_factor' => $data['CO2_emission_factor'],
+            'carbon_footprint' => $data['carbon_footprint'],
+            'carbon_footprint_all_year' => $data['carbon_footprint_all_year'],
+            'vehicle' => $data['vehicle'],
         ]);
     }
 }

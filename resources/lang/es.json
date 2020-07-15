@@ -1,4 +1,5 @@
 	{
+	"vehicle": "Vehículo",
 	"¿How many days a week do you travel to work?": "¿Cuántos días a la semana viajas al trabajo?",
 	"Less than or equal to 100": "Menor o igual a 100",
 	"Greater or equal to 2006": "Mayor o igual a 2006",
@@ -19,7 +20,7 @@
 	"100 to 300": "100 a 300",
 	"300 or more": "300 o más",
 	"Cylinder": "Cilindraje",
-	"Vehicle type": "Tipo de vehiculo",
+	"Vehicle type": "Tipo de vehículo",
 	"Natural Gas": "Gas Natural",
 	"Gasoline": "Gasolina",
 	"Fuel": "Combustible",
