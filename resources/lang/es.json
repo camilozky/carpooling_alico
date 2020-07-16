@@ -1,5 +1,8 @@
 	{
-	"Search": "Buscar",
+	"Trips": "Viajes",
+	"Places on the trip itinerary": "Lugares del recorrido del viaje",
+	"Search": "Busqueda",
+	"Trip search": "Busqueda de viajes",
 	"List of trips for today": "Lista de Viajes para hoy",
 	"vehicle": "Vehículo",
 	"¿How many days a week do you travel to work?": "¿Cuántos días a la semana viajas al trabajo?",
@@ -58,7 +61,7 @@
 	"Enter a meeting place": "Escriba un Lugar de Encuentro",
 	"meetingPlace": "Lugar de Encuentro",
 	"Enter places": "Escriba Sitios por donde pasa el viaje",
-	"places": "Sitios por donde pasa el viaje",
+	"places": "Sitios de la ruta",
 	"email": "Correo electrónico",
 	"placeDropoff": "Destino",
 	"Trip Not Found": "Viaje No Encontrado",

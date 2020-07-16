@@ -23,18 +23,18 @@ class TripController extends Controller
 	 *
 	 * @return \Illuminate\Http\Response
 	 */
-public function __construct()
-{
-	$this->middleware('auth');
-}
-	public function index()
+	public function __construct()
+	{
+		$this->middleware('auth');
+	}
+	public function index(Request $request)
 	{
 
 
 		$factory = (new Factory)->withServiceAccount(__DIR__.'/car-pooling-91d2a-119437167b39.json');
 		$database = $factory->createDatabase();
 		$tripsFromFirebase = $database->getReference('trips')->getvalue();
-		$trips = Trip::latest('created_at')->paginate();
+		// $trips = Trip::latest('datePickup')->paginate();
 		// $trips = Trip::latest('updated_at')->get();  //SELECT * FROM trips order by updated_at DESC
 		// $trips = Trip::where([1,2,3])->latest('updated_at')->get(); //SELECT * FROM trips WHERE id=(1,2,3)
 
@@ -46,7 +46,29 @@ public function __construct()
 		//     ['title' => 'trip # 5'],
 		// ];
 
+
+		$datePickup  = $request->get('datePickup');
+		$timePickup = $request->get('timePickup');
+		$placeDropoff   = $request->get('placeDropoff');
+		$placeDropoff   = $request->get('placeDropoff');
+		$places   = $request->get('places');
+		$placePickup   = $request->get('placePickup');
+		$name   = $request->get('name');
+		$countTrip = Trip::get()->count();
+
+		$trips = Trip::orderBy('datePickup', 'DESC')
+			->datePickup($datePickup)
+			->timePickup($timePickup)
+			->placeDropoff($placeDropoff)
+			->places($places)
+			->places($placePickup)
+			->places($name)
+			->paginate();
+
 		return view('trips.index', compact('trips'));
+
+
+
 	}
 
 	/**

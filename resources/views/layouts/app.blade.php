@@ -16,7 +16,6 @@
 	<!-- Fonts -->
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
 	<!-- Styles -->
 	<link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
@@ -24,9 +23,6 @@
 	<div id="app">
 		<nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
 			<div class="container">
-				<a class="navbar-brand" href="{{ route('home') }}">
-					{{ config('app.name', 'Laravel') }}
-				</a>
 				@include('partials.nav')
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
 					<span class="navbar-toggler-icon"></span>
@@ -53,7 +49,7 @@
 						@else
 						<li class="nav-item dropdown">
 							<a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-								{{ Auth::user()->name }} <span class="caret"></span>
+								{{ Auth::user()->name }} <span ></span>
 							</a>
 
 							<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -76,15 +72,15 @@
 
 	<main class="py-4">
 		@if(session('status'))
-			<div class="container">
-				<div class="row justify-content-center">
-					<div class="col-md-8">
-						<div class="card">
-							<div class="card-header">@include('partials.session-status')</div>
-						</div>
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-8">
+					<div class="card">
+						<div class="card-header">@include('partials.session-status')</div>
 					</div>
 				</div>
 			</div>
+		</div>
 		@endif
 		@yield('content')
 	</main>
