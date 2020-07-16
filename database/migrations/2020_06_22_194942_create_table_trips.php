@@ -15,12 +15,12 @@ class CreateTableTrips extends Migration
     {
         Schema::create('trips', function (Blueprint $table) {
             $table->id();
-            $table->boolean('approved');
+            $table->boolean('approved')->default(1);;
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent();
             $table->char('nameDriver', 100);
-            $table->string('email')->unique()->index();
-            $table->bigInteger('phoneNumber');
+            $table->string('email')->index();;
+            $table->text('phoneNumber');
             $table->date('datePickup');
             $table->text('timePickup');
             $table->text('placePickup');
@@ -31,8 +31,8 @@ class CreateTableTrips extends Migration
             $table->text('passengerName', )->nullable();
             $table->text('emailPassenger')->nullable();
             $table->text('phonenumberPassenger')->nullable();
-
-            // $table->decimal('carbonFootprint', 8, 2);
+            $table->unique(['email', 'datePickup'])->index();;
+            // $table->foreign('email')->references('email')->on('users');
         });
     }
 

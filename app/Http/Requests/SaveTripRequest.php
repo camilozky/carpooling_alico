@@ -28,7 +28,7 @@ class SaveTripRequest extends FormRequest
         return [
             'nameDriver'=>'required|string',
             'email'=>'required|email:rfc,dns',
-            'phoneNumber'=>'required|numeric|min:7',
+            'phoneNumber'=>'required',
             'datePickup'=>'required|date|after_or_equal:yesterday',
             'timePickup'=>'required',
             'placePickup'=>'required',

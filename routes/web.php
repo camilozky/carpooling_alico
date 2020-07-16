@@ -33,6 +33,3 @@ Auth::routes();
 Route::get('/home', 'TripController@index')
 	->name('home.redirect');
 	// ->middleware('auth')
-
-Route::get('/dashboard', 'Co2FingerPrintController@show')->name('co2fingerprint.show');
-Route::post('/registrar-huella-carbono', 'Co2FingerPrintController@store')->name('co2fingerprint.store');

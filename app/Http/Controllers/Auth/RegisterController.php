@@ -29,8 +29,10 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/';
-    // protected $redirectTo = RouteServiceProvider::HOME;
+
+    // return redirect()->route('home')->with('status', __('The Co2 footprint has been successfully saved'));
+
+    protected $redirectTo = RouteServiceProvider::HOME;
 
     /**
      * Create a new controller instance.

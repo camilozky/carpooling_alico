@@ -38,7 +38,11 @@
 							</div>
 						</div>
 						@else
-						@auth
+
+{{-- 						Here's the condition that you won't allow a driver to join your own trip
+						Aqui es la condición de que no permitas que un conductor se una a su propio viaje.
+						@if($trip->emailPassenger) --}}
+
 							<div class="form-group row mb-0">
 								<div class="col-md-6 offset-md-4">
 									<a href="{{ route('trips.edit', $trip) }}">{{ __('edit') }}</a><br>
@@ -64,7 +68,8 @@
 									@endif
 								</div>
 							</div>
-						@endauth
+{{-- 						@endif --}}
+
 					</div>
 				</div>
 			</div>
