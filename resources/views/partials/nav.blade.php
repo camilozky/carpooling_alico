@@ -1,4 +1,3 @@
-
 @auth
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
@@ -17,20 +16,63 @@
 			<li class="nav-item">
 				<a class="nav-link disabled" href="#">Disabled</a>
 			</li>
-			{{ Form::open(['route' => 'trips.index', 'method' => 'GET', 'class' => 'form-inline pull-right']) }}
-			<form class="form-inline my-2 my-lg-0">
-				{{ Form::date('datePickup', null, ['class' => 'form-control',  'placeholder' => __('datePickup')]) }}
-				{{ Form::time('timePickup', null, ['class' => 'form-control', 'placeholder' =>  __('timePickup')]) }}
-				{{ Form::text('placeDropoff', null, ['class' => 'form-control', 'placeholder' =>  __('placeDropoff')]) }}
-				{{ Form::text('places', null, ['class' => 'form-control', 'placeholder' =>  __('places')]) }}
-				{{ Form::text('placePickup', null, ['class' => 'form-control', 'placeholder' =>  __('placePickup')]) }}
-				{{ Form::text('name', null, ['class' => 'form-control', 'placeholder' =>  __('Name')]) }}
-				<button type="submit" class="btn btn-info"><span></span>{{ __('Search') }} </button>
-			</form>
-			{{ Form::close() }}
-		</ul>
-	</div>
-</nav>
-@endauth
-{{-- firebase --}}
-{{-- <li class="{{setActive('maketrip')}}"><a href="{{ route('maketrip') }}">{{ __('Make a trip') }}</a></li> --}}
+			<div id="accordion">
+				<div class="card">
+					<div class="card-header" id="headingOne">
+						<h5 class="mb-0">
+							<button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+								{{ __('Search') }}
+							</button>
+						</h5>
+					</div>
+
+					<div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+						<div class="card-body">
+							<form class="form-inline my-2 my-lg-0">
+								<div class="card-body">
+									<div class="form-group">
+										{{ Form::open(['route' => 'trips.index', 'method' => 'GET', 'class' => 'form-inline pull-right']) }}
+									</div>
+
+									<div class="form-group">
+										{{ Form::date('datePickup', null, ['class' => 'form-control',  'placeholder' => __('datePickup')]) }}
+									</div>
+
+									<div class="form-group">
+										{{ Form::open(['route' => 'trips.index', 'method' => 'GET', 'class' => 'form-inline pull-right']) }}
+									</div><br>
+
+									<div class="form-group">
+										{{ Form::time('timePickup', null, ['class' => 'form-control', 'placeholder' =>  __('timePickup')]) }}
+									</div><br>
+
+									<div class="form-group">
+										{{ Form::text('placeDropoff', null, ['class' => 'form-control', 'placeholder' =>  __('placeDropoff')]) }}
+									</div><br>
+
+									<div class="form-group">
+										{{ Form::text('places', null, ['class' => 'form-control', 'placeholder' =>  __('places')]) }}
+									</div><br>
+
+									<div class="form-group">
+										{{ Form::text('placePickup', null, ['class' => 'form-control', 'placeholder' =>  __('placePickup')]) }}
+									</div><br>
+
+									<div class="form-group">
+										{{ Form::text('name', null, ['class' => 'form-control', 'placeholder' =>  __('Name')]) }}
+									</div><br>
+
+									<div class="form-group">
+										<button type="submit" class="btn btn-primary"><span></span>{{ __('Search') }} </button>
+									</div>										{{ Form::close() }}
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</ul>
+		</div>
+	</nav>
+	@endauth
+	{{-- firebase --}}
+	{{-- <li class="{{setActive('maketrip')}}"><a href="{{ route('maketrip') }}">{{ __('Make a trip') }}</a></li> --}}

@@ -1,3 +1,23 @@
+</html>
+	{{-- javascript code --}}
+	<script src="https://maps.google.com/maps/api/js?key=AIzaSyDxTV3a6oL6vAaRookXxpiJhynuUpSccjY&amp;libraries=places&amp;callback=initAutocomplete" type="text/javascript"></script>
+
+	<script>
+	google.maps.event.addDomListener(window, 'load', initialize);
+
+	function initialize()
+	{
+		var placePickup = document.getElementById('placePickup');
+		var autocompleteplacePickup = new google.maps.places.Autocomplete(placePickup);
+		var placePickup = document.getElementById('placeDropoff');
+		var autocompleteplaceDropoff = new google.maps.places.Autocomplete(placeDropoff);
+		var placePickup = document.getElementById('meetingPlace');
+		var autocompletemeetingPlace = new google.maps.places.Autocomplete(meetingPlace);
+		var placePickup = document.getElementById('places');
+		var autocompleteplaces = new google.maps.places.Autocomplete(places);
+	}
+	</script>
+
 @csrf
 
 <div class="form-group row">
@@ -76,7 +96,6 @@
 
 	<div class="col-md-6">
 		<input id="placePickup" type="text" placeholder="{{ __('placePickup') }}" class="form-control @error('placePickup') is-invalid @enderror" name="placePickup" value="{{old('placePickup', $trip->placePickup)}}" required autocomplete="placePickup" autofocus>
-
 		@error('placePickup')
 		<span class="invalid-feedback" role="alert">
 			<strong>{{ $message }}</strong>
