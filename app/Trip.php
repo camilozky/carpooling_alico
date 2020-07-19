@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class Trip extends Model
@@ -54,4 +55,12 @@ class Trip extends Model
 		if($name)
 			return $query->where('name', 'LIKE', "%$name%");
 	}
+    public function scopeCreatedToday($query)
+    {
+        return $query->where('datePickup', '>=', Carbon::today());
+    }
+    public function scopeAvailableSeats($query)
+    {
+        return $query->where('seats', '>', "0");
+    }
 }

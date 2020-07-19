@@ -25,7 +25,7 @@ class CreateTableTrips extends Migration
             $table->text('timePickup');
             $table->text('placePickup');
             $table->text('placeDropoff');
-            $table->enum('seats', ['1', '2', '3', '4']);
+            $table->enum('seats', ['0','1', '2', '3', '4']);
             $table->text('meetingPlace');
             $table->text('places');
             $table->text('passengerName', )->nullable();

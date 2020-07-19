@@ -49,20 +49,26 @@ class TripController extends Controller
 
 		$datePickup  = $request->get('datePickup');
 		$timePickup = $request->get('timePickup');
-		$placeDropoff   = $request->get('placeDropoff');
-		$placeDropoff   = $request->get('placeDropoff');
-		$places   = $request->get('places');
-		$placePickup   = $request->get('placePickup');
-		$name   = $request->get('name');
+		$placeDropoff = $request->get('placeDropoff');
+		$placeDropoff = $request->get('placeDropoff');
+		$places = $request->get('places');
+		$placePickup = $request->get('placePickup');
+		$name = $request->get('name');
+		$createdToday = $request->get('createdToday');
+		$availableSeats = $request->get('availableSeats');
 		$countTrip = Trip::get()->count();
+
+
 
 		$trips = Trip::orderBy('datePickup', 'DESC')
 			->datePickup($datePickup)
 			->timePickup($timePickup)
 			->placeDropoff($placeDropoff)
 			->places($places)
-			->places($placePickup)
-			->places($name)
+			->placePickup($placePickup)
+			->name($name)
+			->createdToday($createdToday)
+			->availableSeats($availableSeats)
 			->paginate();
 
 		return view('trips.index', compact('trips'));

@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->timestamps();
             $table->float('kilometers');
-            $table->bigInteger('days');
+            $table->enum('days', ['1', '2', '3', '4', '5', '6', '7']);
             $table->float('CO2_emission_factor');
             $table->float('carbon_footprint');
             $table->float('carbon_footprint_all_year');
