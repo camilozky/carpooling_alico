@@ -29,8 +29,6 @@ class TripController extends Controller
 	}
 	public function index(Request $request)
 	{
-
-
 		$factory = (new Factory)->withServiceAccount(__DIR__.'/car-pooling-91d2a-119437167b39.json');
 		$database = $factory->createDatabase();
 		$tripsFromFirebase = $database->getReference('trips')->getvalue();
@@ -46,10 +44,8 @@ class TripController extends Controller
 		//     ['title' => 'trip # 5'],
 		// ];
 
-
 		$datePickup  = $request->get('datePickup');
 		$timePickup = $request->get('timePickup');
-		$placeDropoff = $request->get('placeDropoff');
 		$placeDropoff = $request->get('placeDropoff');
 		$places = $request->get('places');
 		$placePickup = $request->get('placePickup');
@@ -57,8 +53,6 @@ class TripController extends Controller
 		$createdToday = $request->get('createdToday');
 		$availableSeats = $request->get('availableSeats');
 		$countTrip = Trip::get()->count();
-
-
 
 		$trips = Trip::orderBy('datePickup', 'DESC')
 			->datePickup($datePickup)
@@ -69,12 +63,9 @@ class TripController extends Controller
 			->name($name)
 			->createdToday($createdToday)
 			->availableSeats($availableSeats)
-			->paginate();
+			->paginate(100);
 
 		return view('trips.index', compact('trips'));
-
-
-
 	}
 
 	/**

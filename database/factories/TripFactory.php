@@ -11,7 +11,7 @@ $factory->define(Trip::class, function (Faker $faker) {
         'nameDriver' => $faker->name,
         'email' => $faker->unique()->safeEmail,
         'phoneNumber' => $faker->phoneNumber,
-        'datePickup' => $faker->unique()->dateTimeBetween('2020/07/10', '+10 days'),
+        'datePickup' => $faker->unique()->dateTimeBetween('now', '+10 days'),
         'timePickup' => $faker->time($format = 'H:i:s'),
         'placePickup' => $faker->address,
         'placeDropoff' => $faker->address,

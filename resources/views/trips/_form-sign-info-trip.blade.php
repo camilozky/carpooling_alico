@@ -41,12 +41,6 @@
 	</div>
 </div>
 <div class="form-group row">
-	<label for="seats" class="col-md-4 col-form-label text-md-right">{{ __('seats') }}</label>
-	<div class="col-md-6">
-		<input id="seats" type="text" class="form-control" name="seats" readonly value="{{ $trip->seats }}" required autocomplete="seats" autofocus>
-	</div>
-</div>
-<div class="form-group row">
 	<label for="meetingPlace" class="col-md-4 col-form-label text-md-right">{{ __('meetingPlace') }}</label>
 	<div class="col-md-6">
 		<input id="meetingPlace" type="text" class="form-control" name="meetingPlace" readonly value="{{ $trip->meetingPlace }}" required autocomplete="meetingPlace" autofocus>

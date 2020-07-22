@@ -1,4 +1,15 @@
 	{
+
+	"Calculate distance": "Calcular Distancia",
+	"click to calculate Kilometers of distance you travel daily": "haga clic para calcular los kilómetros de distancia que viajas diariamente",
+	"Latitude and Longitude Coordinates Work": "Coordenadas de latitud y longitud Trabajo",
+	"Latitude and Longitude Coordinates Residence": "Coordenadas de latitud y longitud Residencia",
+	"latitudePlaceDropoff": "Lat residencia",
+	"longitudePlaceDropoff": "Long residencia",
+	"latitudePlacePickup": "Lat trabajo",
+	"longitudePlacePickup": "Long trabajo",
+	"Work address": "Dirección del trabajo",
+	"Residential address": "Dirección residencial",
 	"Trips": "Viajes",
 	"Places on the trip itinerary": "Lugares del recorrido del viaje",
 	"Search": "Busqueda",
@@ -61,6 +72,7 @@
 	"Enter a meeting place": "Escriba un Lugar de Encuentro",
 	"meetingPlace": "Lugar de Encuentro",
 	"Enter places": "Escriba Sitios por donde pasa el viaje",
+	"Add trip sites": "Agregar sitios de viaje",
 	"places": "Sitios de la ruta",
 	"email": "Correo electrónico",
 	"placeDropoff": "Destino",

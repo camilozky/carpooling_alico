@@ -11,7 +11,7 @@
 				<div class="card-body">
 					<form method="POST" action="{{ route('trips.store') }}">
 						@include('partials.validation-errors')
-						@include('trips._form', ['btnText' => 'Make a trip'])
+						@include('trips._form-info-user-create', ['btnText' => 'Make a trip'])
 					</form>
 				</div>
 			</div>

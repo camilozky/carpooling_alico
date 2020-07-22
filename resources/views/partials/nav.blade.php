@@ -63,7 +63,7 @@
 									</div><br>
 
 									<div class="form-group">
-										<button type="submit" class="btn btn-primary"><span></span>{{ __('Search') }} </button>
+										<button type="submit" class="btn btn-outline-primary"><span></span>{{ __('Search') }} </button>
 									</div>										{{ Form::close() }}
 								</form>
 							</div>

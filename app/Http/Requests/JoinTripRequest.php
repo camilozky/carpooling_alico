@@ -28,17 +28,17 @@ class JoinTripRequest extends FormRequest
         return [
             'nameDriver'=>'required|string',
             'email'=>'required|email',
-            'phoneNumber'=>'required|numeric|min:7',
+            'phoneNumber'=>'required|min:7',
             'datePickup'=>'required|date',
             'timePickup'=>'required',
             'placePickup'=>'required',
             'placeDropoff'=>'required',
-            'seats'=>'required|numeric',
+            'seats'=>'required',
             'meetingPlace'=>'required',
-            'places'=>'required|min:3',
+            'places'=>'required',
             'passengerName'=>'required|string',
-            'emailPassenger'=>'required|email:rfc,dns',
-            'phonenumberPassenger'=>'required|numeric|min:7'
+            'emailPassenger'=>'required',
+            'phonenumberPassenger'=>'required|min:7'
         ];
     }
         public function messages()

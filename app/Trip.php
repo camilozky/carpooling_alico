@@ -50,10 +50,10 @@ class Trip extends Model
 		if($placePickup)
 			return $query->where('placePickup', 'LIKE', "%$placePickup%");
 	}
-	public function scopeName($query, $name)
+	public function scopeName($query, $nameDriver)
 	{
-		if($name)
-			return $query->where('name', 'LIKE', "%$name%");
+		if($nameDriver)
+			return $query->where('nameDriver', 'LIKE', "%$nameDriver%");
 	}
     public function scopeCreatedToday($query)
     {

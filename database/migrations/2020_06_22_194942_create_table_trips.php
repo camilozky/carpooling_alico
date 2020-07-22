@@ -22,16 +22,16 @@ class CreateTableTrips extends Migration
             $table->string('email')->index();;
             $table->text('phoneNumber');
             $table->date('datePickup');
-            $table->text('timePickup');
+            $table->time('timePickup');
             $table->text('placePickup');
             $table->text('placeDropoff');
-            $table->enum('seats', ['0','1', '2', '3', '4']);
+            $table->bigInteger('seats');
             $table->text('meetingPlace');
             $table->text('places');
             $table->text('passengerName', )->nullable();
             $table->text('emailPassenger')->nullable();
             $table->text('phonenumberPassenger')->nullable();
-            $table->unique(['email', 'datePickup'])->index();;
+            $table->unique(['email', 'datePickup', 'timePickup'])->index();;
             // $table->foreign('email')->references('email')->on('users');
         });
     }
