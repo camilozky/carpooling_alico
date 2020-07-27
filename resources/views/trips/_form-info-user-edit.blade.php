@@ -5,14 +5,19 @@
 
 	function initialize()
 	{
-		var placePickup = document.getElementById('placePickup');
-		var autocompleteplacePickup = new google.maps.places.Autocomplete(placePickup);
-		var placePickup = document.getElementById('placeDropoff');
-		var autocompleteplaceDropoff = new google.maps.places.Autocomplete(placeDropoff);
-		var placePickup = document.getElementById('meetingPlace');
-		var autocompletemeetingPlace = new google.maps.places.Autocomplete(meetingPlace);
-		var placePickup = document.getElementById('places');
-		var autocompleteplaces = new google.maps.places.Autocomplete(places);
+		var inputPlacePickup = document.getElementById('placePickup');
+		var autocompletePlacePickup = new google.maps.places.Autocomplete(inputPlacePickup);
+
+		var inputPlaceDropoff = document.getElementById('placeDropoff');
+		var autocompletePlaceDropoff = new google.maps.places.Autocomplete(inputPlaceDropoff);
+
+		var inputMeetingPlace = document.getElementById('meetingPlace');
+		var autocompleteMeetingPlace = new google.maps.places.Autocomplete(inputMeetingPlace);
+
+
+
+		var inputPlaces = document.getElementById('place');
+		var places = new google.maps.places.Autocomplete(inputPlaces);
 	}
 </script>
 @auth @csrf
@@ -21,31 +26,7 @@
 	<label for="nameDriver" class="col-md-4 col-form-label text-md-right">{{ __('nameDriver') }}</label>
 
 	<div class="col-md-6">
-		<input id="nameDriver" type="text" placeholder="{{ __('nameDriver') }}" class="form-control @error('nameDriver') is-invalid @enderror" name="nameDriver" value="{{old('nameDriver', $trip->nameDriver, Auth::user()->name, $trip->nameDriver)}}" required autocomplete="nameDriver" autofocus>
-
-		@error('nameDriver')
-		<span class="invalid-feedback" role="alert">
-			<strong>{{ $message }}</strong>
-		</span>
-		@enderror
-	</div>
-</div>
-
-
-<div class="form-group row">
-	<label for="nameDriver" class="col-md-4 col-form-label text-md-right">{{ __('nameDriver') }}</label>
-	<div class="col-md-6">
-		<input id="nameDriver" type="text" class="form-control" name="nameDriver" readonly value="{{ Auth::user()->name }}" required autocomplete="nameDriver" autofocus>
-	</div>
-</div>
-
-
-
-<div class="form-group row">
-	<label for="nameDriver" class="col-md-4 col-form-label text-md-right">{{ __('nameDriver') }}</label>
-
-	<div class="col-md-6">
-		<input id="nameDriver" type="text" placeholder="{{ __('nameDriver') }}" class="form-control @error('nameDriver') is-invalid @enderror" name="nameDriver" value="{{old('nameDriver', Auth::user()->name)}}" required autocomplete="nameDriver" autofocus>
+		<input id="nameDriver" type="text" placeholder="{{ __('nameDriver') }}" class="form-control @error('nameDriver') is-invalid @enderror" name="nameDriver" value="{{old('nameDriver', $trip->nameDriver)}}" required autocomplete="nameDriver" autofocus>
 
 		@error('nameDriver')
 		<span class="invalid-feedback" role="alert">
@@ -88,7 +69,7 @@
 	<label for="datePickup" class="col-md-4 col-form-label text-md-right">{{ __('datePickup') }}</label>
 
 	<div class="col-md-6">
-		<input id="datePickup" type="date"  class="form-control @error('datePickup') is-invalid @enderror" name="datePickup" value="{{old('datePickup', $trip->datePickup)}}" required autocomplete="datePickup" autofocus>
+		<input id="datePickup" type="date"  class="form-control @error('datePickup') is-invalid @enderror" name="datePickup" value="{{old('datePickup', $trip->datePickup)}}" required autocomplete="datePickup" autofocus >
 
 		@error('datePickup')
 		<span class="invalid-feedback" role="alert">
@@ -102,7 +83,7 @@
 	<label for="timePickup" class="col-md-4 col-form-label text-md-right">{{ __('timePickup') }}</label>
 
 	<div class="col-md-6">
-		<input id="timePickup" type="time"  class="form-control @error('timePickup') is-invalid @enderror" name="timePickup" value="{{old('timePickup', $trip->timePickup)}}" required autocomplete="timePickup" autofocus>
+		<input id="timePickup" type="time"  class="form-control @error('timePickup') is-invalid @enderror" name="timePickup" value="{{old('timePickup', $trip->timePickup)}}" required autocomplete="timePickup" autofocus value="10:30 PM">
 
 		@error('timePickup')
 		<span class="invalid-feedback" role="alert">
@@ -116,7 +97,7 @@
 	<label for="placePickup" class="col-md-4 col-form-label text-md-right">{{ __('placePickup') }}</label>
 
 	<div class="col-md-6">
-		<input id="placePickup" type="text" placeholder="{{ __('placePickup') }}" class="form-control @error('placePickup') is-invalid @enderror" name="placePickup" value="{{old('placePickup', $trip->placePickup)}}" required autocomplete="placePickup" autofocus>
+		<input id="placePickup" type="text" placeholder="{{ __('placePickup') }}" class="form-control @error('placePickup') is-invalid @enderror" name="placePickup" value="{{old('placePickup', $trip->placePickup, $trip->placePickup)}}" required autocomplete="placePickup" autofocus>
 		@error('placePickup')
 		<span class="invalid-feedback" role="alert">
 			<strong>{{ $message }}</strong>
@@ -129,7 +110,7 @@
 	<label for="placeDropoff" class="col-md-4 col-form-label text-md-right">{{ __('placeDropoff') }}</label>
 
 	<div class="col-md-6">
-		<input id="placeDropoff" type="text" placeholder="{{ __('placeDropoff') }}" class="form-control @error('placeDropoff') is-invalid @enderror" name="placeDropoff" value="{{old('placeDropoff', $trip->placeDropoff)}}" required autocomplete="placeDropoff" autofocus>
+		<input id="placeDropoff" type="text" placeholder="{{ __('placeDropoff') }}" class="form-control @error('placeDropoff') is-invalid @enderror" name="placeDropoff" value="{{old('placeDropoff', $trip->placeDropoff, $trip->placeDropoff)}}" required autocomplete="placeDropoff" autofocus>
 
 		@error('placeDropoff')
 		<span class="invalid-feedback" role="alert">
@@ -138,18 +119,12 @@
 		@enderror
 	</div>
 </div>
-
-
 <div class="form-group row">
 	<label for="seats" class="col-md-4 col-form-label text-md-right">{{ __('seats') }}</label>
 
 	<div class="col-md-6">
-		<select name="seats" id="seats">
-			<option value="1">1</option>
-			<option value="2">2</option>
-			<option value="3">3</option>
-			<option value="4">4</option>
-		</select>
+		<input id="seats" type="text" placeholder="{{ __('seats') }}" class="form-control @error('seats') is-invalid @enderror" name="seats" value="{{old('seats', $trip->seats, $trip->seats)}}" required autocomplete="seats" autofocus>
+
 		@error('seats')
 		<span class="invalid-feedback" role="alert">
 			<strong>{{ $message }}</strong>
@@ -158,11 +133,12 @@
 	</div>
 </div>
 
+
 <div class="form-group row">
 	<label for="meetingPlace" class="col-md-4 col-form-label text-md-right">{{ __('meetingPlace') }}</label>
 
 	<div class="col-md-6">
-		<input id="meetingPlace" type="text" placeholder="{{ __('meetingPlace') }}" class="form-control @error('meetingPlace') is-invalid @enderror" name="meetingPlace" value="{{old('meetingPlace', $trip->meetingPlace)}}" required autocomplete="meetingPlace" autofocus>
+		<input id="meetingPlace" type="text" placeholder="{{ __('meetingPlace') }}" class="form-control @error('meetingPlace') is-invalid @enderror" name="meetingPlace" value="{{old('meetingPlace', $trip->placePickup, $trip->meetingPlace)}}" required autocomplete="meetingPlace" autofocus>
 
 		@error('meetingPlace')
 		<span class="invalid-feedback" role="alert">
@@ -176,8 +152,7 @@
 	<label for="places" class="col-md-4 col-form-label text-md-right">{{ __('places') }}</label>
 
 	<div class="col-md-6">
-		<input id="places" type="text" placeholder="{{ __('places') }}" class="form-control @error('places') is-invalid @enderror" name="places" value="{{old('places', $trip->places)}}" required autocomplete="places" autofocus>
-
+		<textarea id="places" rows="10" cols="50"  type="text" placeholder="{{ __('places') }}" class="form-control @error('places') is-invalid @enderror" name="places" required autocomplete="places" autofocus>{{old('places', $trip->places)}}</textarea>
 		@error('places')
 		<span class="invalid-feedback" role="alert">
 			<strong>{{ $message }}</strong>
@@ -185,10 +160,77 @@
 		@enderror
 	</div>
 </div>
+<div class="form-group row">
+	<label for="place" class="col-md-4 col-form-label text-md-right">{{ __('Add trip sites') }}</label>
+
+	<div class="col-md-6">
+		<input id="place" type="text" placeholder="{{ __('Add trip sites') }}" class="form-control @error('place') is-invalid @enderror" name="place" value="{{old('meetingPlace')}}" autocomplete="place" autofocus>
+
+		@error('place')
+		<span class="invalid-feedback" role="alert">
+			<strong>{{ $message }}</strong>
+		</span>
+		@enderror
+	</div>
+</div>
+
+
+<div class="form-group row">
+	<label class="col-md-4 col-form-label text-md-right"></label>
+
+	<div class="col-md-6">
+		<div class="row">
+			<div class="col-sm-6">
+				<script>
+					var placeDropoffTemp = document.getElementById("placeDropoff").value
+					var placePickupTemp = document.getElementById("placePickup").value
+					var placesTemp = [placeDropoffTemp,placePickupTemp];
+					document.getElementById("place").value = placesTemp;
+					function addPlace()
+					{
+						placesTemp.splice(0,0,document.getElementById("place").value);
+						document.getElementById("places").value = placesTemp;
+						document.getElementById("place").value = '';
+					}
+					function removePlace()
+					{
+						placesTemp.shift();
+						document.getElementById("place").value = '';
+					}
+					document.addEventListener('DOMContentLoaded', function()
+					{
+						document.querySelector('#add-trip-sites').onclick = function()
+						{
+							addPlace();
+						}
+						document.querySelector('#remove-trip-sites').onclick = function()
+						{
+							removePlace();
+							document.getElementById("places").value = placesTemp;
+							document.getElementById("place").value = '';
+						}
+					});
+
+
+				</script>
+				<button type="button" id="add-trip-sites" class="btn btn-outline-success">
+					{{ __('Add trip sites') }}
+				</button>
+			</div>
+			<div class="col-sm-6">
+
+				<button type="button" id="remove-trip-sites" class="btn btn-outline-danger">
+					{{ __('Disaggregate trip sites') }}
+				</button>
+			</div>
+		</div>
+
+	</div>
+</div>
 
 <div class="form-group row mb-0">
 	<div class="col-md-6 offset-md-4">
-		<button type="submit" class="btn btn-outline-primary">
+		<button type="submit" class="btn btn-outline-success">
 			{{__($btnText)}}
 		</button>
 	</div>

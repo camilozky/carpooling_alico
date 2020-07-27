@@ -12,7 +12,7 @@
 					<form method="POST" action="{{ route('trips.update', $trip) }}">
 						@include('partials.validation-errors')
 						@method('PATCH')
-						@include('trips._form', ['btnText' => 'update'])
+						@include('trips._form-info-user-edit', ['btnText' => 'update'])
 					</form>
 				</div>
 			</div>

@@ -92,18 +92,6 @@
 </div>
 
 <script>
-	$(document).ready( function() {
-		var now = new Date();
-		var day = ("0" + now.getDate()).slice(-2);
-		var month = ("0" + (now.getMonth() + 1)).slice(-2);
-		var today = now.getFullYear()+"-"+(month)+"-"+(day) ;
-		$('#datePickup').val(today);
-	});
-</script>
-
-
-
-<script>
 	$(document).ready( function()
 	{
 		var d = new Date();
@@ -196,30 +184,6 @@
 </div>
 
 <div class="form-group row">
-	<label for="place" class="col-md-4 col-form-label text-md-right">{{ __('Add trip sites') }}</label>
-
-	<div class="col-md-6">
-		<input id="place" type="text" placeholder="{{ __('Add trip sites') }}" class="form-control @error('place') is-invalid @enderror" name="place" value="{{old('meetingPlace', Auth::user()->placePickup, $trip->meetingPlace)}}" autocomplete="place" autofocus>
-
-		@error('place')
-		<span class="invalid-feedback" role="alert">
-			<strong>{{ $message }}</strong>
-		</span>
-		@enderror
-	</div>
-</div>
-
-
-<div class="form-group row">
-	<label class="col-md-4 col-form-label text-md-right"></label>
-	<div class="col-md-6">
-		<button type="button" id="add-trip-sites" class="btn btn-outline-primary">
-			{{ __('Add trip sites') }}
-		</button>
-	</div>
-</div>
-
-<div class="form-group row">
 	<label for="places" class="col-md-4 col-form-label text-md-right">{{ __('places') }}</label>
 
 	<div class="col-md-6">
@@ -232,25 +196,72 @@
 	</div>
 </div>
 
+<div class="form-group row">
+	<label for="place" class="col-md-4 col-form-label text-md-right">{{ __('Add trip sites') }}</label>
 
-<script>
-	var placesTemp = [];
-	document.getElementById("place").value = placesTemp;
-	function myFunction()
-	{
-		placesTemp.push(document.getElementById("place").value);
-		document.getElementById("places").value = placesTemp;
-		document.getElementById("place").value = '';
-	}
-	document.addEventListener('DOMContentLoaded', function()
-	{
-		document.querySelector('#add-trip-sites').onclick = function()
-		{
-			myFunction();
-		}
-	});
+	<div class="col-md-6">
+		<input id="place" type="text" placeholder="{{ __('Add trip sites') }}" class="form-control @error('place') is-invalid @enderror" name="place" value="{{old('meetingPlace')}}" autocomplete="place" autofocus>
 
-</script>
+		@error('place')
+		<span class="invalid-feedback" role="alert">
+			<strong>{{ $message }}</strong>
+		</span>
+		@enderror
+	</div>
+</div>
+
+<div class="form-group row">
+	<label class="col-md-4 col-form-label text-md-right"></label>
+
+	<div class="col-md-6">
+		<div class="row">
+			<div class="col-sm-6">
+				<script>
+					var placeDropoffTemp = document.getElementById("placeDropoff").value
+					var placePickupTemp = document.getElementById("placePickup").value
+					var placesTemp = [placeDropoffTemp,placePickupTemp];
+					document.getElementById("place").value = placesTemp;
+					function addPlace()
+					{
+						placesTemp.splice(0,0,document.getElementById("place").value);
+						document.getElementById("places").value = placesTemp;
+						document.getElementById("place").value = '';
+					}
+					function removePlace()
+					{
+						placesTemp.shift();
+						document.getElementById("place").value = '';
+					}
+					document.addEventListener('DOMContentLoaded', function()
+					{
+						document.querySelector('#add-trip-sites').onclick = function()
+						{
+							addPlace();
+						}
+						document.querySelector('#remove-trip-sites').onclick = function()
+						{
+							removePlace();
+							document.getElementById("places").value = placesTemp;
+							document.getElementById("place").value = '';
+						}
+					});
+
+
+				</script>
+				<button type="button" id="add-trip-sites" class="btn btn-outline-success">
+					{{ __('Add trip sites') }}
+				</button>
+			</div>
+			<div class="col-sm-6">
+
+				<button type="button" id="remove-trip-sites" class="btn btn-outline-danger">
+					{{ __('Disaggregate trip sites') }}
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+
 
 <div class="form-group row mb-0">
 	<div class="col-md-6 offset-md-4">

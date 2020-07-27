@@ -19,7 +19,8 @@ class Trip extends Model
 
 	public function getRouteKeyName()
 	{
-		return 'email';
+
+		return 'id';
 	}
 
 	//Query Scope
@@ -54,6 +55,11 @@ class Trip extends Model
 	{
 		if($nameDriver)
 			return $query->where('nameDriver', 'LIKE', "%$nameDriver%");
+	}
+	public function scopeEmailPassenger($query, $emailPassenger)
+	{
+		if($emailPassenger)
+			return $query->where('emailPassenger', 'LIKE', "%$emailPassenger%");
 	}
     public function scopeCreatedToday($query)
     {

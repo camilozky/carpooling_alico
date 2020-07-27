@@ -10,7 +10,8 @@
 				<div class="card-header">{{ __('Trip information') }} {{ __('destined') }}: {{ $trip->placeDropoff}}</div>
 				<div class="card-body">
 					@include('trips._form-sign-info-trip')
-					@if($trip->passengerName <> NULL)
+
+					@if($trip->emailPassenger <> NULL)
 					<div class="card-header">{{ __('Passenger information') }}</div>
 					<div class="card-body">
 						<div class="form-group row">
@@ -39,37 +40,37 @@
 						</div>
 						@else
 
-{{-- 						Here's the condition that you won't allow a driver to join your own trip
-						Aqui es la condición de que no permitas que un conductor se una a su propio viaje.
-						@if($trip->emailPassenger) --}}
-
-							<div class="form-group row mb-0">
-								<div class="col-md-6 offset-md-4">
-									<a href="{{ route('trips.edit', $trip) }}">{{ __('edit') }}</a><br>
-								</div>
+						@if($trip->email == Auth::user()->email)
+						<div class="form-group row mb-0">
+							<div class="col-md-6 offset-md-4">
+								<a href="{{ route('trips.edit', $trip) }}">{{ __('edit') }}</a><br>
 							</div>
+						</div>
 
-							<div class="form-group row mb-0">
-								<div class="col-md-6 offset-md-4">
-									<form method="POST" action="{{ route('trips.destroy', $trip) }}">
-										@csrf @method('DELETE')
-										<button type="submit" class="btn btn-outline-danger">
-											{{ __('delete') }}
-										</button>
-									</form>
-								</div>
+						<div class="form-group row mb-0">
+							<div class="col-md-6 offset-md-4">
+								<form method="POST" action="{{ route('trips.destroy', $trip) }}">
+									@csrf @method('DELETE')
+									<button type="submit" class="btn btn-outline-danger">
+										{{ __('delete') }}
+									</button>
+								</form>
 							</div>
-
-							@endif
-							<div class="form-group row mb-0">
-								<div class="col-md-6 offset-md-4">
-									@if($trip->seats > 0)
-									<a href="{{ route('trips.sign', $trip) }}">{{ __('Join a trip') }}</a>
-									@endif
-								</div>
+						</div>
+						@endif
+						@endif
+						<div class="form-group row mb-0">
+							<div class="col-md-6 offset-md-4">
+								@if (strstr( $trip->emailPassenger, Auth::user()->email ))
+								@else
+								@if($trip->email <> Auth::user()->email)
+								@if($trip->seats > 0)
+								<a href="{{ route('trips.sign', $trip) }}">{{ __('Join a trip') }}</a>
+								@endif
+								@endif
+								@endif
 							</div>
-{{-- 						@endif --}}
-
+						</div>
 					</div>
 				</div>
 			</div>

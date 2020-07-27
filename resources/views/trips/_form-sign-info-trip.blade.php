@@ -49,11 +49,11 @@
 <div class="form-group row">
 	<label for="places" class="col-md-4 col-form-label text-md-right">{{ __('places') }}</label>
 	<div class="col-md-6">
-		<input id="places" type="text" class="form-control" name="places" readonly value="{{ $trip->places }}" required autocomplete="places" autofocus>
+		<textarea id="places" rows="10" cols="50"  type="text" placeholder="{{ __('places') }}" class="form-control @error('places') is-invalid @enderror" name="places" required autocomplete="places" autofocus readonly>{{$trip->places}}</textarea>
 	</div>
 </div>
 <div class="form-group row">
-	<label for="places" class="col-md-4 col-form-label text-md-right">{{ $trip->created_at->diffForHumans() }}</label>
+	<label class="col-md-4 col-form-label text-md-right">{{ $trip->created_at->diffForHumans() }}</label>
 	<div class="col-md-6">
 	</div>
 </div>

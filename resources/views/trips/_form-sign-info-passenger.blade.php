@@ -2,7 +2,7 @@
 	<label for="passengerName" class="col-md-4 col-form-label text-md-right">{{ __('passengerName') }}</label>
 
 	<div class="col-md-6">
-		<input id="passengerName" type="text" placeholder="{{ __('passengerName') }}" class="form-control @error('passengerName') is-invalid @enderror" name="passengerName" value="{{old('passengerName')}}" required autocomplete="passengerName" autofocus>
+		<input id="passengerName" type="text" placeholder="{{ __('passengerName') }}" class="form-control @error('passengerName') is-invalid @enderror" name="passengerName" value="{{old('nameDriver', Auth::user()->name)}}" required autocomplete="passengerName" autofocus>
 
 		@error('passengerName')
 		<span class="invalid-feedback" role="alert">
@@ -16,7 +16,7 @@
 	<label for="emailPassenger" class="col-md-4 col-form-label text-md-right">{{ __('emailPassenger') }}</label>
 
 	<div class="col-md-6">
-		<input id="emailPassenger" type="email" placeholder="{{ __('emailPassenger') }}" class="form-control @error('emailPassenger') is-invalid @enderror" name="emailPassenger" value="{{old('emailPassenger')}}" required autocomplete="emailPassenger" autofocus>
+		<input id="emailPassenger" type="email" placeholder="{{ __('emailPassenger') }}" class="form-control @error('emailPassenger') is-invalid @enderror" name="emailPassenger" value="{{old('emailPassenger', Auth::user()->email)}}" required autocomplete="emailPassenger" autofocus>
 
 		@error('emailPassenger')
 		<span class="invalid-feedback" role="alert">
@@ -30,7 +30,7 @@
 	<label for="phonenumberPassenger" class="col-md-4 col-form-label text-md-right">{{ __('phonenumberPassenger') }}</label>
 
 	<div class="col-md-6">
-		<input id="phonenumberPassenger" type="tel" placeholder="{{ __('phonenumberPassenger') }}" class="form-control @error('phonenumberPassenger') is-invalid @enderror" name="phonenumberPassenger" value="{{old('phonenumberPassenger')}}" required autocomplete="phonenumberPassenger" autofocus>
+		<input id="phonenumberPassenger" type="tel" placeholder="{{ __('phonenumberPassenger') }}" class="form-control @error('phonenumberPassenger') is-invalid @enderror" name="phonenumberPassenger" value="{{old('phoneNumber', Auth::user()->phoneNumber)}}" required autocomplete="phonenumberPassenger" autofocus>
 
 		@error('phonenumberPassenger')
 		<span class="invalid-feedback" role="alert">
