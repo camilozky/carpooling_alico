@@ -248,13 +248,13 @@
 
 
 				</script>
-				<button type="button" id="add-trip-sites" class="btn btn-outline-success">
+				<button type="button" id="add-trip-sites" class="btn btn-outline-success btn-block">
 					{{ __('Add trip sites') }}
 				</button>
 			</div>
 			<div class="col-sm-6">
 
-				<button type="button" id="remove-trip-sites" class="btn btn-outline-danger">
+				<button type="button" id="remove-trip-sites" class="btn btn-outline-danger btn-block">
 					{{ __('Disaggregate trip sites') }}
 				</button>
 			</div>
@@ -265,7 +265,7 @@
 
 <div class="form-group row mb-0">
 	<div class="col-md-6 offset-md-4">
-		<button type="submit" class="btn btn-outline-primary">
+		<button type="submit" class="btn btn-outline-primary btn-block">
 			{{__($btnText)}}
 		</button>
 	</div>

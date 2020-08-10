@@ -1,5 +1,5 @@
 @auth
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar bg-white navbar-expand-lg navbar-light bg-light shadow-sm">
 
 	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 		<span class="navbar-toggler-icon"></span>
@@ -8,13 +8,10 @@
 	<div class="collapse navbar-collapse" id="navbarSupportedContent">
 		<ul class="navbar-nav mr-auto">
 			<li class="nav-item active">
-				<a class="navbar-brand" href="{{ route('home') }}">{{ config('app.name', 'Laravel') }}</a>
+				<a class="navbar-brand" {{ setActive('home') }} href="{{ route('home') }}">{{ config('app.name', 'Laravel') }}</a>
 			</li>
 			<li class="nav-item">
 				<a class="nav-link" href="{{ route('trips.create') }}">{{ __('Make a trip') }}</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link disabled" href="#">Disabled</a>
 			</li>
 			<div id="accordion">
 				<div class="card">

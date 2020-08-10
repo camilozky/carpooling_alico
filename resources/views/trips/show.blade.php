@@ -15,17 +15,14 @@
 					<div class="card-header">{{ __('Passenger information') }}</div>
 					<div class="card-body">
 						<div class="form-group row">
-							<label for="nameDriver" class="col-md-4 col-form-label text-md-right">{{ __('nameDriver') }}</label>
-							<div class="col-md-6">
-								<input id="nameDriver" type="text" class="form-control" name="nameDriver" readonly value="{{ $trip->nameDriver }}" required autocomplete="nameDriver" autofocus>
-							</div>
-						</div>
-						<div class="form-group row">
 							<label for="passengerName" class="col-md-4 col-form-label text-md-right">{{ __('passengerName') }}</label>
 							<div class="col-md-6">
 								<input id="passengerName" type="text" class="form-control" name="passengerName" readonly value="{{ $trip->passengerName }}" required autocomplete="passengerName" autofocus>
 							</div>
 						</div>
+
+
+
 						<div class="form-group row">
 							<label for="emailPassenger" class="col-md-4 col-form-label text-md-right">{{ __('emailPassenger') }}</label>
 							<div class="col-md-6">
@@ -43,7 +40,7 @@
 						@if($trip->email == Auth::user()->email)
 						<div class="form-group row mb-0">
 							<div class="col-md-6 offset-md-4">
-								<a href="{{ route('trips.edit', $trip) }}">{{ __('edit') }}</a><br>
+								<a class="btn btn-outline-success btn-block"  href="{{ route('trips.edit', $trip) }}">{{ __('edit') }}</a><br>
 							</div>
 						</div>
 
@@ -51,7 +48,7 @@
 							<div class="col-md-6 offset-md-4">
 								<form method="POST" action="{{ route('trips.destroy', $trip) }}">
 									@csrf @method('DELETE')
-									<button type="submit" class="btn btn-outline-danger">
+									<button type="submit" class="btn btn-outline-danger btn-block">
 										{{ __('delete') }}
 									</button>
 								</form>
@@ -65,13 +62,18 @@
 								@else
 								@if($trip->email <> Auth::user()->email)
 								@if($trip->seats > 0)
-								<a href="{{ route('trips.sign', $trip) }}">{{ __('Join a trip') }}</a>
+								<a class="btn btn-outline-primary btn-block" href="{{ route('trips.sign', $trip) }}">{{ __('Join a trip') }}</a>
 								@endif
 								@endif
 								@endif
 							</div>
 						</div>
 					</div>
+					<div class="form-group row mb-0">
+							<div class="col-md-6 offset-md-4">
+								<a class="btn btn-outline-dark btn-block" href="{{ route('trips.index', $trip) }}">{{ __('Back to home') }}</a>
+							</div>
+						</div>
 				</div>
 			</div>
 		</div>

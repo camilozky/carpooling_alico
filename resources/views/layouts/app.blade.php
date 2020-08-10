@@ -84,6 +84,12 @@
 		@endif
 		@yield('content')
 	</main>
+
+	<footer class="bg-white text-center text-black-50 py-3 shadow">
+		{{ config('app.name') }} | Copyright a Milo (github.com/camilozky) {{ date('Y') }}
+	</footer>
+
+
 </div>
 </body>
 </html>
