@@ -22,14 +22,18 @@
 										</div></small>
 
 										<div class="card-body">
+
+
 											<div class="form-group row">
+												<small><label class=" text-black-50  container font-weight-bold">{{ __('placePickup') }}</label></small>
 												<span >
-													<label style="color:red" class="container font-weight-bold">{{ $trip->placePickup }}</label>
+													<label style="color:blue" class="container font-weight-bold">{{ $trip->placePickup }}</label>
 												</span>
 											</div>
 											<div class="form-group row">
 												<span >
-													<label style="color:green" class="container font-weight-bold text-green">{{ $trip->placeDropoff }}</label>
+													<small><label class=" text-black-50  container font-weight-bold">{{ __('placeDropoff') }}</label></small>
+													<label class="container font-weight-bold text-green">{{ $trip->placeDropoff }}</label>
 												</span>
 											</div>
 											<div class="form-group row">
@@ -45,12 +49,12 @@
 								</div>
 							</div>
 						</div>
-							</a>
-						@endforeach
-						{{ $trips->render() }}
-						@endsection
-					</div>
+					</a>
+					@endforeach
+					{{ $trips->render() }}
+					@endsection
 				</div>
 			</div>
 		</div>
 	</div>
+</div>
