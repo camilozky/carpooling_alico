@@ -109,7 +109,7 @@
 								<label for="placeDropoff" class="col-md-4 col-form-label text-md-right">{{ __('Residential address') }}</label>
 
 								<div class="col-md-6">
-									<input id="placeDropoff" type="tel" class="form-control @error('placeDropoff') is-invalid @enderror" placeholder="{{ __('Residential address') }}" name="placeDropoff" value="{{ old('placeDropoff') }}" required autocomplete="placeDropoff" autofocus>
+									<input id="placeDropoff" class="form-control @error('placeDropoff') is-invalid @enderror" placeholder="{{ __('Residential address') }}" name="placeDropoff" value="{{ old('placeDropoff') }}" required autocomplete="placeDropoff" autofocus>
 
 									@error('placeDropoff')
 									<span class="invalid-feedback" role="alert">
@@ -151,7 +151,7 @@
 								<label for="placePickup" class="col-md-4 col-form-label text-md-right">{{ __('Work address') }}</label>
 
 								<div class="col-md-6">
-									<input id="placePickup" type="tel" class="form-control @error('placePickup') is-invalid @enderror" placeholder="{{ __('Work address') }}" name="placePickup" value="{{ old('placePickup') }}" required autocomplete="placePickup" autofocus>
+									<input id="placePickup" class="form-control @error('placePickup') is-invalid @enderror" placeholder="{{ __('Work address') }}" name="placePickup" value="{{ old('placePickup') }}" required autocomplete="placePickup" autofocus>
 
 									@error('placePickup')
 									<span class="invalid-feedback" role="alert">
