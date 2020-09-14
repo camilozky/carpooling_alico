@@ -336,7 +336,7 @@
 									var presentDate = new Date();
 									var newYearsDay = new Date(presentDate.getFullYear(), 0, 1)
 									var elapsedWeeksOfYear = Math.round(presentDate.getTime() - newYearsDay.getTime()) / 7 / (oneDayMilliseconds);
-									var Co2FootprintTemp= CO2EmissionFactor * days * kilometers * elapsedWeeksOfYear;
+									var Co2FootprintTemp= CO2EmissionFactor *  kilometers ;
 									var Co2FootprintAllYearTemp= CO2EmissionFactor * days * kilometers * 52.18;
 									var Co2Footprint = parseFloat(Co2FootprintTemp).toFixed(2);
 									var Co2FootprintAllYear = parseFloat(Co2FootprintAllYearTemp).toFixed(2);
