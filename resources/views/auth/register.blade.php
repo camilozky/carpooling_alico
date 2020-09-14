@@ -253,6 +253,8 @@
 								<div class="col-md-6">
 									<select id="vehicle_type" name="vehicle_type" onchange="CalculateCo2Footprint(this)">
 										<option label="Selecciona el tipo de Vehículo | Combustilbe | Cilindraje"></option>
+										<optgroup label="Sin vehículo" id="Sin vehículo">
+											<option value="0">Sin vehículo o bicicleta</option>
 										<optgroup label="Moto 4T | Gasolina | Cilindraje ≤100" id="Moto 4T | Gasolina | Cilindraje ≤100">
 											<option value="54.39743923">1950 ≤ Modelo < 2006</option>
 											<option value="45.33119936">Modelo ≥ 2006</option>

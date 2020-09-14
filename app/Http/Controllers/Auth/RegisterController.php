@@ -65,9 +65,9 @@ class RegisterController extends Controller
             'longitudePlacePickup'=>['numeric', 'min:-99999.99999', 'max:99999.99999'],
             'kilometers' => ['required', 'numeric', 'min:1', 'max:999.99'],
             'days'=>['required', 'numeric', 'min:1', 'max:7'],
-            'CO2_emission_factor'=>['required', 'numeric', 'min:1', 'max:999999999.99'],
-            'carbon_footprint'=>['required', 'numeric', 'min:1', 'max:999999999.99'],
-            'carbon_footprint_all_year'=>['required', 'numeric', 'min:1', 'max:999999999.99'],
+            'CO2_emission_factor'=>['required', 'numeric', 'min:0', 'max:999999999.99'],
+            'carbon_footprint'=>['required', 'numeric', 'min:0', 'max:999999999.99'],
+            'carbon_footprint_all_year'=>['required', 'numeric', 'min:0', 'max:999999999.99'],
             'vehicle' => ['required', 'string', 'max:255'],
         ]);
     }
