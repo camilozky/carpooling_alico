@@ -24,10 +24,10 @@ class CreateUsersTable extends Migration
 			$table->string('phoneNumber');
 			$table->string('placeDropoff');
 			$table->string('placePickup');
-			$table->float('latitudePlaceDropoff')->nullable();
-			$table->float('longitudePlaceDropoff')->nullable();
-			$table->float('latitudePlacePickup')->nullable();
-			$table->float('longitudePlacePickup')->nullable();
+			$table->float('latitudePlaceDropoff', 20, 20)->nullable();
+			$table->float('longitudePlaceDropoff', 20, 20)->nullable();
+			$table->float('latitudePlacePickup', 20, 20)->nullable();
+			$table->float('longitudePlacePickup', 20, 20)->nullable();
 			$table->bigInteger('days');
 			$table->float('kilometers');
 			$table->float('CO2_emission_factor');

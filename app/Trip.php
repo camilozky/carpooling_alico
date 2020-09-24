@@ -19,7 +19,6 @@ class Trip extends Model
 
 	public function getRouteKeyName()
 	{
-
 		return 'id';
 	}
 

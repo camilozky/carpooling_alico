@@ -14,6 +14,9 @@ Route::post('/viajes', 'TripController@store')->name('trips.store');
 Route::get('/viajes', 'TripController@index')->name('trips.index');
 Route::get('/viajes/{trip}', 'TripController@show')->name('trips.show');
 
+Route::get('usuarios/{user}', 'UserController@show')->name('users.show');
+Route::patch('/usuarios/{user}', 'UserController@update')->name('users.update');
+
 Route::get('/viajes/{trip}/editar', 'TripController@edit')->name('trips.edit');
 Route::patch('/viajes/{trip}', 'TripController@update')->name('trips.update');
 

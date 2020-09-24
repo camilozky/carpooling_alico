@@ -1,5 +1,7 @@
 	{
 
+	"View Profile": "Ver Perfil",
+	"Edit Profile": "Editar Perfil",
 	"See details": "Ver detalles",
 	"Calculate distance": "Calcular Distancia",
 	"click to calculate Kilometers of distance you travel daily": "haga clic para calcular los kilómetros de distancia que viajas diariamente",
@@ -44,6 +46,7 @@
 	"The Co2 footprint has been successfully saved": "La huella de carbono Co2 se ha registrado satisfactoriamente",
 	"The trip has been successfully created ": "El viaje ha sido creado satisfactoriamente",
 	"The trip has been successfully modified ": "El viaje ha sido modificado satisfactoriamente ",
+	"You have successfully updated your profile ": "Haz actualizado tu perfil satisfactoriamente ",
 	"You have joined the successfully trip ": "Te has unido al viaje satisfactoriamente ",
 	"The trip has been successfully eliminated ": "El viaje ha sido eliminado satisfactoriamente ",
 	"delete": "Eliminar",
@@ -56,6 +59,7 @@
 	"emailPassenger": "correo electrónico de los pasajeros",
 	"phonenumberPassenger": "Numero telefónico de los pasajeros",
 	"Passenger information": "Información de los pasajeros",
+	"User information": "Información del Usuario",
 	"Trip information": "Información del Viaje",
 	"The Date Pickup must be later than or equal to today.": "Fecha de recogida debe ser una fecha posterior o igual a hoy.",
 	"nameDriver": "Nombre del Conductor",

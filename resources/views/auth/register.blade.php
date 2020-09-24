@@ -1,260 +1,260 @@
-	<script src="https://maps.google.com/maps/api/js?key=AIzaSyDxTV3a6oL6vAaRookXxpiJhynuUpSccjY&amp;libraries=places&amp;callback=initAutocomplete" type="text/javascript"></script>
+<script src="https://maps.google.com/maps/api/js?key=AIzaSyDxTV3a6oL6vAaRookXxpiJhynuUpSccjY&amp;libraries=places&amp;callback=initAutocomplete" type="text/javascript"></script>
 
-	<script>
-		google.maps.event.addDomListener(window, 'load', initialize);
+<script>
+	google.maps.event.addDomListener(window, 'load', initialize);
 
-		function initialize()
-		{
-			var inputPlaceDropoff = document.getElementById('placeDropoff');
-			var placeDropoff = new google.maps.places.Autocomplete(inputPlaceDropoff);
-			placeDropoff.addListener('place_changed',
-				function()
-				{
-					var place = placeDropoff.getPlace();
-					$('#latitudePlaceDropoff').val(place.geometry['location'].lat());
-					$('#longitudePlaceDropoff').val(place.geometry['location'].lng());
+	function initialize()
+	{
+		var inputPlaceDropoff = document.getElementById('placeDropoff');
+		var placeDropoff = new google.maps.places.Autocomplete(inputPlaceDropoff);
+		placeDropoff.addListener('place_changed',
+			function()
+			{
+				var place = placeDropoff.getPlace();
+				$('#latitudePlaceDropoff').val(place.geometry['location'].lat());
+				$('#longitudePlaceDropoff').val(place.geometry['location'].lng());
 
-				});
-			var inputplacePickup = document.getElementById('placePickup');
-			var placePickup = new google.maps.places.Autocomplete(inputplacePickup);
-			placePickup.addListener('place_changed',
-				function()
-				{
-					var place = placePickup.getPlace();
-					$('#latitudePlacePickup').val(place.geometry['location'].lat());
-					$('#longitudePlacePickup').val(place.geometry['location'].lng());
-				});
-		}
-	</script>
+			});
+		var inputplacePickup = document.getElementById('placePickup');
+		var placePickup = new google.maps.places.Autocomplete(inputplacePickup);
+		placePickup.addListener('place_changed',
+			function()
+			{
+				var place = placePickup.getPlace();
+				$('#latitudePlacePickup').val(place.geometry['location'].lat());
+				$('#longitudePlacePickup').val(place.geometry['location'].lng());
+			});
+	}
+</script>
 
-	@extends('layouts.app')
+@extends('layouts.app')
 
-	@section('content')
-	<div class="container">
-		<div class="row justify-content-center">
-			<div class="col-md-8">
-				<div class="card">
-					<div class="card-header">{{ __('Register') }}</div>
+@section('content')
+<div class="container">
+	<div class="row justify-content-center">
+		<div class="col-md-8">
+			<div class="card">
+				<div class="card-header">{{ __('Register') }}</div>
 
-					<div class="card-body">
-						@include('partials.validation-errors')
-						<form method="POST" action="{{ route('register') }}">
-							@csrf
+				<div class="card-body">
+					@include('partials.validation-errors')
+					<form method="POST" action="{{ route('register') }}">
+						@csrf
 
-							<div class="form-group row">
-								<label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+						<div class="form-group row">
+							<label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
-								<div class="col-md-6">
-									<input id="name" type="text" class="form-control @error('name') is-invalid @enderror" placeholder="{{ __('Name') }}" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+							<div class="col-md-6">
+								<input id="name" type="text" class="form-control @error('name') is-invalid @enderror" placeholder="{{ __('Name') }}" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
 
-									@error('name')
-									<span class="invalid-feedback" role="alert">
-										<strong>{{ $message }}</strong>
-									</span>
-									@enderror
-								</div>
+								@error('name')
+								<span class="invalid-feedback" role="alert">
+									<strong>{{ $message }}</strong>
+								</span>
+								@enderror
 							</div>
+						</div>
 
-							<div class="form-group row">
-								<label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+						<div class="form-group row">
+							<label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
-								<div class="col-md-6">
-									<input id="email" type="email" class="form-control @error('email') is-invalid @enderror" placeholder="{{ __('email') }}" name="email" value="{{ old('email') }}" required autocomplete="email">
+							<div class="col-md-6">
+								<input id="email" type="email" class="form-control @error('email') is-invalid @enderror" placeholder="{{ __('email') }}" name="email" value="{{ old('email') }}" required autocomplete="email">
 
-									@error('email')
-									<span class="invalid-feedback" role="alert">
-										<strong>{{ $message }}</strong>
-									</span>
-									@enderror
-								</div>
+								@error('email')
+								<span class="invalid-feedback" role="alert">
+									<strong>{{ $message }}</strong>
+								</span>
+								@enderror
 							</div>
+						</div>
 
-							<div class="form-group row">
-								<label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+						<div class="form-group row">
+							<label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
-								<div class="col-md-6">
-									<input id="password" type="password" class="form-control @error('password') is-invalid @enderror" placeholder="{{ __('Password') }}" name="password" required autocomplete="new-password">
+							<div class="col-md-6">
+								<input id="password" type="password" class="form-control @error('password') is-invalid @enderror" placeholder="{{ __('Password') }}" name="password" required autocomplete="new-password">
 
-									@error('password')
-									<span class="invalid-feedback" role="alert">
-										<strong>{{ $message }}</strong>
-									</span>
-									@enderror
-								</div>
+								@error('password')
+								<span class="invalid-feedback" role="alert">
+									<strong>{{ $message }}</strong>
+								</span>
+								@enderror
 							</div>
+						</div>
 
-							<div class="form-group row">
-								<label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
+						<div class="form-group row">
+							<label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
 
-								<div class="col-md-6">
-									<input id="password-confirm" type="password" class="form-control" placeholder="{{ __('Confirm Password') }}" name="password_confirmation" required autocomplete="new-password">
-								</div>
+							<div class="col-md-6">
+								<input id="password-confirm" type="password" class="form-control" placeholder="{{ __('Confirm Password') }}" name="password_confirmation" required autocomplete="new-password">
 							</div>
+						</div>
 
-							<div class="form-group row">
-								<label for="phoneNumber" class="col-md-4 col-form-label text-md-right">{{ __('phoneNumber') }}</label>
+						<div class="form-group row">
+							<label for="phoneNumber" class="col-md-4 col-form-label text-md-right">{{ __('phoneNumber') }}</label>
 
-								<div class="col-md-6">
-									<input id="phoneNumber" type="tel" class="form-control @error('phoneNumber') is-invalid @enderror" placeholder="{{ __('phoneNumber') }}" name="phoneNumber" value="{{ old('phoneNumber') }}" required autocomplete="phoneNumber" autofocus>
+							<div class="col-md-6">
+								<input id="phoneNumber" type="tel" class="form-control @error('phoneNumber') is-invalid @enderror" placeholder="{{ __('phoneNumber') }}" name="phoneNumber" value="{{ old('phoneNumber') }}" required autocomplete="phoneNumber" autofocus>
 
-									@error('phoneNumber')
-									<span class="invalid-feedback" role="alert">
-										<strong>{{ $message }}</strong>
-									</span>
-									@enderror
-								</div>
+								@error('phoneNumber')
+								<span class="invalid-feedback" role="alert">
+									<strong>{{ $message }}</strong>
+								</span>
+								@enderror
 							</div>
+						</div>
 
-							<div class="form-group row">
-								<label for="placeDropoff" class="col-md-4 col-form-label text-md-right">{{ __('Residential address') }}</label>
+						<div class="form-group row">
+							<label for="placeDropoff" class="col-md-4 col-form-label text-md-right">{{ __('Residential address') }}</label>
 
-								<div class="col-md-6">
-									<input id="placeDropoff" class="form-control @error('placeDropoff') is-invalid @enderror" placeholder="{{ __('Residential address') }}" name="placeDropoff" value="{{ old('placeDropoff') }}" required autocomplete="placeDropoff" autofocus>
+							<div class="col-md-6">
+								<input id="placeDropoff" class="form-control @error('placeDropoff') is-invalid @enderror" placeholder="{{ __('Residential address') }}" name="placeDropoff" value="{{ old('placeDropoff') }}" required autocomplete="placeDropoff" autofocus>
 
-									@error('placeDropoff')
-									<span class="invalid-feedback" role="alert">
-										<strong>{{ $message }}</strong>
-									</span>
-									@enderror
-								</div>
+								@error('placeDropoff')
+								<span class="invalid-feedback" role="alert">
+									<strong>{{ $message }}</strong>
+								</span>
+								@enderror
 							</div>
+						</div>
 
-							<div class="form-group row">
-								<label class="col-md-4 col-form-label text-md-right">{{ __('Latitude and Longitude Coordinates Residence') }}</label>
+						<div class="form-group row">
+							<label class="col-md-4 col-form-label text-md-right">{{ __('Latitude and Longitude Coordinates Residence') }}</label>
 
-								<div class="col-md-6">
+							<div class="col-md-6">
 
 
-									<div class="row">
-										<div class="col-sm-6">
-											<input id="latitudePlaceDropoff" type="numeric" class="form-control @error('latitudePlaceDropoff') is-invalid @enderror" placeholder="{{ __('latitudePlaceDropoff') }}" name="latitudePlaceDropoff" value="{{ old('latitudePlaceDropoff') }}" required readonly autocomplete="latitudePlaceDropoff" autofocus>
+								<div class="row">
+									<div class="col-sm-6">
+										<input id="latitudePlaceDropoff" type="numeric" class="form-control @error('latitudePlaceDropoff') is-invalid @enderror" placeholder="{{ __('latitudePlaceDropoff') }}" name="latitudePlaceDropoff" value="{{ old('latitudePlaceDropoff') }}" required readonly autocomplete="latitudePlaceDropoff" autofocus>
 
-											@error('latitudePlaceDropoff')
-											<span class="invalid-feedback" role="alert">
-												<strong>{{ $message }}</strong>
-											</span>
-										@enderror							</div>
-										<div class="col-sm-6">
-											<input id="longitudePlaceDropoff" type="numeric" class="form-control @error('longitudePlaceDropoff') is-invalid @enderror" placeholder="{{ __('longitudePlaceDropoff') }}" name="longitudePlaceDropoff" value="{{ old('longitudePlaceDropoff') }}" required readonly autocomplete="longitudePlaceDropoff" autofocus>
+										@error('latitudePlaceDropoff')
+										<span class="invalid-feedback" role="alert">
+											<strong>{{ $message }}</strong>
+										</span>
+									@enderror							</div>
+									<div class="col-sm-6">
+										<input id="longitudePlaceDropoff" type="numeric" class="form-control @error('longitudePlaceDropoff') is-invalid @enderror" placeholder="{{ __('longitudePlaceDropoff') }}" name="longitudePlaceDropoff" value="{{ old('longitudePlaceDropoff') }}" required readonly autocomplete="longitudePlaceDropoff" autofocus>
 
-											@error('longitudePlaceDropoff')
-											<span class="invalid-feedback" role="alert">
-												<strong>{{ $message }}</strong>
-											</span>
-											@enderror
-										</div>
+										@error('longitudePlaceDropoff')
+										<span class="invalid-feedback" role="alert">
+											<strong>{{ $message }}</strong>
+										</span>
+										@enderror
 									</div>
 								</div>
 							</div>
+						</div>
 
-							<div class="form-group row">
-								<label for="placePickup" class="col-md-4 col-form-label text-md-right">{{ __('Work address') }}</label>
+						<div class="form-group row">
+							<label for="placePickup" class="col-md-4 col-form-label text-md-right">{{ __('Work address') }}</label>
 
-								<div class="col-md-6">
-									<input id="placePickup" class="form-control @error('placePickup') is-invalid @enderror" placeholder="{{ __('Work address') }}" name="placePickup" value="{{ old('placePickup') }}" required autocomplete="placePickup" autofocus>
+							<div class="col-md-6">
+								<input id="placePickup" class="form-control @error('placePickup') is-invalid @enderror" placeholder="{{ __('Work address') }}" name="placePickup" value="{{ old('placePickup') }}" required autocomplete="placePickup" autofocus>
 
-									@error('placePickup')
-									<span class="invalid-feedback" role="alert">
-										<strong>{{ $message }}</strong>
-									</span>
-									@enderror
-								</div>
+								@error('placePickup')
+								<span class="invalid-feedback" role="alert">
+									<strong>{{ $message }}</strong>
+								</span>
+								@enderror
 							</div>
+						</div>
 
-							<div class="form-group row">
-								<label class="col-md-4 col-form-label text-md-right">{{ __('Latitude and Longitude Coordinates Work') }}</label>
+						<div class="form-group row">
+							<label class="col-md-4 col-form-label text-md-right">{{ __('Latitude and Longitude Coordinates Work') }}</label>
 
-								<div class="col-md-6">
+							<div class="col-md-6">
 
 
-									<div class="row">
-										<div class="col-sm-6">
-											<input id="latitudePlacePickup" type="numeric" class="form-control @error('latitudePlacePickup') is-invalid @enderror" placeholder="{{ __('latitudePlacePickup') }}" name="latitudePlacePickup" value="{{ old('latitudePlacePickup') }}" required readonly autocomplete="latitudePlacePickup" autofocus>
+								<div class="row">
+									<div class="col-sm-6">
+										<input id="latitudePlacePickup" type="numeric" class="form-control @error('latitudePlacePickup') is-invalid @enderror" placeholder="{{ __('latitudePlacePickup') }}" name="latitudePlacePickup" value="{{ old('latitudePlacePickup') }}" required readonly autocomplete="latitudePlacePickup" autofocus>
 
-											@error('latitudePlacePickup')
-											<span class="invalid-feedback" role="alert">
-												<strong>{{ $message }}</strong>
-											</span>
-										@enderror							</div>
-										<div class="col-sm-6">
-											<input id="longitudePlacePickup" type="numeric" class="form-control @error('longitudePlacePickup') is-invalid @enderror" placeholder="{{ __('longitudePlacePickup') }}" name="longitudePlacePickup" value="{{ old('longitudePlacePickup') }}" required readonly autocomplete="longitudePlacePickup" autofocus>
+										@error('latitudePlacePickup')
+										<span class="invalid-feedback" role="alert">
+											<strong>{{ $message }}</strong>
+										</span>
+									@enderror							</div>
+									<div class="col-sm-6">
+										<input id="longitudePlacePickup" type="numeric" class="form-control @error('longitudePlacePickup') is-invalid @enderror" placeholder="{{ __('longitudePlacePickup') }}" name="longitudePlacePickup" value="{{ old('longitudePlacePickup') }}" required readonly autocomplete="longitudePlacePickup" autofocus>
 
-											@error('longitudePlacePickup')
-											<span class="invalid-feedback" role="alert">
-												<strong>{{ $message }}</strong>
-											</span>
-											@enderror
-										</div>
+										@error('longitudePlacePickup')
+										<span class="invalid-feedback" role="alert">
+											<strong>{{ $message }}</strong>
+										</span>
+										@enderror
 									</div>
-
-
 								</div>
+
+
 							</div>
+						</div>
 
-							<div class="form-group row">
-								<label for="days" class="col-md-4 col-form-label text-md-right">{{ __('¿How many days a week do you travel to work?') }}</label>
+						<div class="form-group row">
+							<label for="days" class="col-md-4 col-form-label text-md-right">{{ __('¿How many days a week do you travel to work?') }}</label>
 
-								<div class="col-md-6">
-									<select name="days" id="days">
-										<option value=1>1</option>
-										<option value=2>2</option>
-										<option value=3>3</option>
-										<option value=4>4</option>
-										<option value=5>5</option>
-										<option value=6>6</option>
-										<option value=7>7</option>
-									</select>
-									@error('days')
-									<span class="invalid-feedback" role="alert">
-										<strong>{{ $message }}</strong>
-									</span>
-									@enderror
-								</div>
+							<div class="col-md-6">
+								<select name="days" id="days">
+									<option value=1>1</option>
+									<option value=2>2</option>
+									<option value=3>3</option>
+									<option value=4>4</option>
+									<option value=5>5</option>
+									<option value=6>6</option>
+									<option value=7>7</option>
+								</select>
+								@error('days')
+								<span class="invalid-feedback" role="alert">
+									<strong>{{ $message }}</strong>
+								</span>
+								@enderror
 							</div>
+						</div>
 
-							<script type="module">
-								import LatLon from 'https://cdn.jsdelivr.net/npm/geodesy@2/latlon-spherical.min.js';
-								document.addEventListener('DOMContentLoaded', function()
+						<script type="module">
+							import LatLon from 'https://cdn.jsdelivr.net/npm/geodesy@2/latlon-spherical.min.js';
+							document.addEventListener('DOMContentLoaded', function()
+							{
+								document.querySelector('#calc-dist').onclick = function()
 								{
-									document.querySelector('#calc-dist').onclick = function()
-									{
-										calculateDistance();
-									}
-								});
-								function calculateDistance() {
-									const c1= latitudePlaceDropoff.value + ',' + longitudePlaceDropoff.value
-									const c2= latitudePlacePickup.value + ',' + longitudePlacePickup.value
-									const p1 = LatLon.parse(c1);
-									const p2 = LatLon.parse(c2);
-									const dist = (parseFloat(p1.distanceTo(p2).toPrecision(2)) / 1000) * 2;
-									document.getElementById("kilometers").value = dist;
+									calculateDistance();
 								}
-							</script>
+							});
+							function calculateDistance() {
+								const c1= latitudePlaceDropoff.value + ',' + longitudePlaceDropoff.value
+								const c2= latitudePlacePickup.value + ',' + longitudePlacePickup.value
+								const p1 = LatLon.parse(c1);
+								const p2 = LatLon.parse(c2);
+								const dist = (parseFloat(p1.distanceTo(p2).toPrecision(2)) / 1000) * 2;
+								document.getElementById("kilometers").value = dist;
+							}
+						</script>
 
-							<div class="form-group row">
-								<label for="kilometers" class="col-md-4 col-form-label text-md-right">{{ __('click to calculate Kilometers of distance you travel daily') }}</label>
-								<div class="col-md-6">
-									<button type="button" id="calc-dist" class="btn btn-outline-primary">
-										{{ __('Calculate distance') }}
-									</button>
-								</div>
+						<div class="form-group row">
+							<label for="kilometers" class="col-md-4 col-form-label text-md-right">{{ __('click to calculate Kilometers of distance you travel daily') }}</label>
+							<div class="col-md-6">
+								<button type="button" id="calc-dist" class="btn btn-outline-primary btn-block">
+									{{ __('Calculate distance') }}
+								</button>
 							</div>
+						</div>
 
-							<div class="form-group row">
-								<label class="col-md-4 col-form-label text-md-right">{{ __('Kilometers of distance you travel daily') }}</label>
-								<div class="col-md-6">
-									<input id="kilometers" type="numeric" placeholder="{{ __('Kilometers of distance you travel daily') }}" class="form-control" @error('kilometers') is-invalid @enderror value="{{old('kilometers')}}" name="kilometers" step="0.01" min="1" max="1000" required  autocomplete="kilometers" autofocus>
-								</div>
+						<div class="form-group row">
+							<label class="col-md-4 col-form-label text-md-right">{{ __('Kilometers of distance you travel daily') }}</label>
+							<div class="col-md-6">
+								<input id="kilometers" type="numeric" placeholder="{{ __('Kilometers of distance you travel daily') }}" class="form-control" @error('kilometers') is-invalid @enderror value="{{old('kilometers')}}" name="kilometers" step="0.01" min="1" max="1000" required  autocomplete="kilometers" autofocus>
 							</div>
+						</div>
 
 
-							<div class="form-group row">
-								<label for="vehicle_type" class="col-md-4 col-form-label text-md-right">{{ __('Vehicle type') }}</label>
-								<div class="col-md-6">
-									<select id="vehicle_type" name="vehicle_type" onchange="CalculateCo2Footprint(this)">
-										<option label="Selecciona el tipo de Vehículo | Combustilbe | Cilindraje"></option>
-										<optgroup label="Sin vehículo" id="Sin vehículo">
-											<option value="0">Sin vehículo o bicicleta</option>
+						<div class="form-group row">
+							<label for="vehicle_type" class="col-md-4 col-form-label text-md-right">{{ __('Vehicle type') }}</label>
+							<div class="col-md-6">
+								<select id="vehicle_type" name="vehicle_type" onchange="CalculateCo2Footprint(this)">
+									<option label="Selecciona el tipo de Vehículo | Combustilbe | Cilindraje"></option>
+									<optgroup label="Sin vehículo" id="Sin vehículo">
+										<option value="0">Sin vehículo o bicicleta</option>
 										<optgroup label="Moto 4T | Gasolina | Cilindraje ≤100" id="Moto 4T | Gasolina | Cilindraje ≤100">
 											<option value="54.39743923">1950 ≤ Modelo < 2006</option>
 											<option value="45.33119936">Modelo ≥ 2006</option>
@@ -381,7 +381,7 @@
 
 							<div class="form-group row mb-0">
 								<div class="col-md-6 offset-md-4">
-									<button type="submit" class="btn btn-outline-primary">
+									<button type="submit" class="btn btn-outline-primary btn-block">
 										{{ __('Register') }}
 									</button>
 								</div>
