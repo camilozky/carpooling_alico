@@ -5,7 +5,7 @@
 </head>
 <body>
 
-	{{ var_dump($validatedRequestFields) }}
+	{{-- {{ var_dump($validatedRequestFields) }} --}}
 
 	<h1>{{ __('Hello!') }}: {{ $validatedRequestFields['nameDriver'] }}</h1>
 	<h2>{{ $validatedRequestFields['passengerName'] }} {{ __('You just joined a trip with the following information:') }}</h2>

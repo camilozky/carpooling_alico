@@ -5,7 +5,7 @@
 </head>
 <body>
 
-	{{ var_dump($trip) }}
+{{-- {{ var_dump($trip) }} --}}
 
 	<h1>{{ __('Hello!') }}: {{ $trip['nameDriver'] }}</h1>
 	<h2>{{ __('You just deleted a trip with the mail:') }} {{ $trip['email'] }} {{ __('and') }} {{ __('phoneNumber') }}: {{ $trip['phoneNumber'] }}</h2>

@@ -33,11 +33,9 @@ migration tables
 // 45,33 * 20 = 906,6
 
 //3. Interface where the user can update his information
-https://styde.net/laravel-5/
+//unit of measurement carbon emissions()
 
-unit of measurement carbon emissions()
-
-arreglar la plantilla del envio
+fix_email_shipping_template
 1. both car and moto
 
 2. function unJoin() passenger
