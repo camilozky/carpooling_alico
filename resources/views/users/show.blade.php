@@ -329,27 +329,27 @@
 														var vehicleType = vehicleTypeTemp.text
 														document.getElementById("CO2_emission_factor").value = CO2EmissionFactor;
 														document.getElementById("carbon_footprint").value = Co2Footprint;
-														document.getElementById("carbon_footprint_all_year").value = Co2FootprintAllYear;
+														document.getElementById("carbon_footprint_all_year").value = Co2FootprintAllYear/1000;
 														document.getElementById("vehicle").value = vehicleTypeCat + " | "+ vehicleType;
 													}
 												</script>
 
 												<div class="form-group row">
-													<label for="CO2_emission_factor" class="col-md-4 col-form-label text-md-right">{{ __('CO2 emission factor') }}</label>
+													<label for="CO2_emission_factor" class="col-md-4 col-form-label text-md-right">{{ __('CO2 emission factor') }} (g/km) </label>
 													<div class="col-md-6">
 														<input id="CO2_emission_factor" type="text" placeholder="{{ __('CO2 emission factor') }}" class="form-control" name="CO2_emission_factor" value="{{old('CO2_emission_factor', $user->CO2_emission_factor)}}" readonly required autocomplete="CO2_emission_factor" autofocus>
 													</div>
 												</div>
 
 												<div class="form-group row">
-													<label for="carbon_footprint" class="col-md-4 col-form-label text-md-right">{{ __('Carbon footprint') }}</label>
+													<label for="carbon_footprint" class="col-md-4 col-form-label text-md-right">{{ __('Carbon footprint') }} (g/km) </label>
 													<div class="col-md-6">
 														<input id="carbon_footprint" type="text" placeholder="{{ __('Carbon footprint') }}" class="form-control" name="carbon_footprint" value="{{old('carbon_footprint', $user->carbon_footprint)}}" readonly required autocomplete="carbon_footprint" autofocus>
 													</div>
 												</div>
 
 												<div class="form-group row">
-													<label for="carbon_footprint_all_year" class="col-md-4 col-form-label text-md-right">{{ __('Carbon footprint Calculated at the end of the year') }}</label>
+													<label for="carbon_footprint_all_year" class="col-md-4 col-form-label text-md-right">{{ __('Carbon footprint Calculated at the end of the year')  }} (Ton/km) </label>
 													<div class="col-md-6">
 														<input id="carbon_footprint_all_year" type="text" placeholder="{{ __('Carbon footprint Calculated at the end of the year') }}"  class="form-control" name="carbon_footprint_all_year" value="{{old('carbon_footprint_all_year', $user->carbon_footprint_all_year)}}" readonly required autocomplete="carbon_footprint_all_year" autofocus>
 													</div>

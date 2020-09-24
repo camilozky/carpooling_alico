@@ -32,10 +32,11 @@ migration tables
 // (unidad de medida toneladas)
 // 45,33 * 20 = 906,6
 
-3. Interface where the user can update his information
+//3. Interface where the user can update his information
 https://styde.net/laravel-5/
 
-unidad_de_la_huella_de_carbono()
+unit of measurement carbon emissions()
+
 arreglar la plantilla del envio
 1. both car and moto
 
